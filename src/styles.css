@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+/* Define variables */
+:root {
+    --primary-color: #000319;
+    --secondary-color: #01FC8D;
+    --font-size: 16px;
+}
+
+/* Universal reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+/* Use variables */
+body {
+    font-size: var(--font-size);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+button {
+    color: white;
+}
