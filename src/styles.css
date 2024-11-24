@@ -1,32 +1,302 @@
 /* Define variables */
 :root {
-    --primary-color: #000319;
-    --secondary-color: #01FC8D;
-    --font-size: 16px;
+  --primary-color: #000319;
+  --secondary-color: #01fc8d;
+  --font-size: 16px;
 }
 
 /* Universal reset */
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: inherit;
-    border: 0;
-    outline: 0;
-    text-decoration: none;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  list-style: none;
 }
-
 
 /* Use variables */
 body {
-    font-size: var(--font-size);
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+  font-size: var(--font-size);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 button {
-    color: white;
+  color: white;
+}
+
+/* login buttons styles */
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}
+.btn-check[disabled] + .btn,
+.ajax-upload-dragdrop .btn-check[disabled] + .ajax-file-upload,
+.btn-check:disabled + .btn,
+.ajax-upload-dragdrop .btn-check:disabled + .ajax-file-upload {
+  pointer-events: none;
+  filter: none;
+  opacity: 0.65;
+}
+
+.btn-gradient-primary {
+  background: linear-gradient(to right, #da8cff, #9a55ff);
+  border: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.btn-gradient-primary:not([disabled]):not(.disabled):active,
+.btn-gradient-primary:not([disabled]):not(.disabled).active,
+.show > .btn-gradient-primary.dropdown-toggle {
+  background: linear-gradient(to right, #da8cff, #9a55ff);
+}
+
+.btn-gradient-primary:hover {
+  opacity: 0.8;
+}
+
+.btn-gradient-primary:not(.btn-gradient-light) {
+  color: #ffffff;
+}
+
+.btn-gradient-primary:not(.btn-gradient-light):hover,
+.btn-gradient-primary:not(.btn-gradient-light):focus,
+.btn-gradient-primary:not(.btn-gradient-light):active {
+  color: #ffffff;
+}
+
+.btn-gradient-secondary {
+  background: linear-gradient(to right, #e7ebf0, #868e96);
+  border: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+.btn-gradient-secondary:not([disabled]):not(.disabled):active,
+.btn-gradient-secondary:not([disabled]):not(.disabled).active,
+.show > .btn-gradient-secondary.dropdown-toggle {
+  background: linear-gradient(to right, #e7ebf0, #868e96);
+}
+
+.btn-gradient-secondary:hover {
+  opacity: 0.8;
+}
+
+.btn-gradient-secondary:not(.btn-gradient-light) {
+  color: #ffffff;
+}
+
+.btn-gradient-secondary:not(.btn-gradient-light):hover,
+.btn-gradient-secondary:not(.btn-gradient-light):focus,
+.btn-gradient-secondary:not(.btn-gradient-light):active {
+  color: #ffffff;
+}
+
+.btn-gradient-success {
+  background: linear-gradient(to right, #84d9d2, #07a58d);
+  border: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.btn-gradient-success:not([disabled]):not(.disabled):active,
+.btn-gradient-success:not([disabled]):not(.disabled).active,
+.show > .btn-gradient-success.dropdown-toggle {
+  background: linear-gradient(to right, #84d9d2, #07cdae);
+}
+
+.btn-gradient-success:hover {
+  opacity: 0.8;
+}
+
+.btn-gradient-success:not(.btn-gradient-light) {
+  color: #ffffff;
+}
+
+.btn-gradient-success:not(.btn-gradient-light):hover,
+.btn-gradient-success:not(.btn-gradient-light):focus,
+.btn-gradient-success:not(.btn-gradient-light):active {
+  color: #ffffff;
+}
+
+.btn-gradient-info {
+  background: linear-gradient(to right, #90caf9, #047edf 99%);
+  border: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.btn-gradient-info:not([disabled]):not(.disabled):active,
+.btn-gradient-info:not([disabled]):not(.disabled).active,
+.show > .btn-gradient-info.dropdown-toggle {
+  background: linear-gradient(to right, #90caf9, #047edf 99%);
+}
+
+.btn-gradient-info:hover {
+  opacity: 0.8;
+}
+
+.btn-gradient-info:not(.btn-gradient-light) {
+  color: #ffffff;
+}
+
+.btn-gradient-info:not(.btn-gradient-light):hover,
+.btn-gradient-info:not(.btn-gradient-light):focus,
+.btn-gradient-info:not(.btn-gradient-light):active {
+  color: #ffffff;
+}
+
+.btn-gradient-warning {
+  background: linear-gradient(to right, #f6e384, #ffd500);
+  border: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.btn-gradient-warning:not([disabled]):not(.disabled):active,
+.btn-gradient-warning:not([disabled]):not(.disabled).active,
+.show > .btn-gradient-warning.dropdown-toggle {
+  background: linear-gradient(to right, #f6e384, #ffd500);
+}
+
+.btn-gradient-warning:hover {
+  opacity: 0.8;
+}
+
+.btn-gradient-warning:not(.btn-gradient-light) {
+  color: #ffffff;
+}
+
+.btn-gradient-warning:not(.btn-gradient-light):hover,
+.btn-gradient-warning:not(.btn-gradient-light):focus,
+.btn-gradient-warning:not(.btn-gradient-light):active {
+  color: #ffffff;
+}
+
+.btn-gradient-danger {
+  background: linear-gradient(to right, #ffbf96, #fe7096);
+  border: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.btn-gradient-danger:not([disabled]):not(.disabled):active,
+.btn-gradient-danger:not([disabled]):not(.disabled).active,
+.show > .btn-gradient-danger.dropdown-toggle {
+  background: linear-gradient(to right, #ffbf96, #fe7096);
+}
+
+.btn-gradient-danger:hover {
+  opacity: 0.8;
+}
+
+.btn-gradient-danger:not(.btn-gradient-light) {
+  color: #ffffff;
+}
+
+.btn-gradient-danger:not(.btn-gradient-light):hover,
+.btn-gradient-danger:not(.btn-gradient-light):focus,
+.btn-gradient-danger:not(.btn-gradient-light):active {
+  color: #ffffff;
+}
+
+.btn-gradient-light {
+  background: linear-gradient(to bottom, #f4f4f4, #e4e4e9);
+  border: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.btn-gradient-light:not([disabled]):not(.disabled):active,
+.btn-gradient-light:not([disabled]):not(.disabled).active,
+.show > .btn-gradient-light.dropdown-toggle {
+  background: linear-gradient(to bottom, #f4f4f4, #e4e4e9);
+}
+
+.btn-gradient-light:hover {
+  opacity: 0.8;
+}
+
+.btn-gradient-light:not(.btn-gradient-light) {
+  color: #ffffff;
+}
+
+.btn-gradient-light:not(.btn-gradient-light):hover,
+.btn-gradient-light:not(.btn-gradient-light):focus,
+.btn-gradient-light:not(.btn-gradient-light):active {
+  color: #ffffff;
+}
+
+.btn-gradient-dark {
+  background: linear-gradient(89deg, #5e7188, #3e4b5b);
+  border: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.btn-gradient-dark:not([disabled]):not(.disabled):active,
+.btn-gradient-dark:not([disabled]):not(.disabled).active,
+.show > .btn-gradient-dark.dropdown-toggle {
+  background: linear-gradient(89deg, #5e7188, #3e4b5b);
+}
+
+.btn-gradient-dark:hover {
+  opacity: 0.8;
+}
+
+.btn-gradient-dark:not(.btn-gradient-light) {
+  color: #ffffff;
+}
+
+.btn-gradient-dark:not(.btn-gradient-light):hover,
+.btn-gradient-dark:not(.btn-gradient-light):focus,
+.btn-gradient-dark:not(.btn-gradient-light):active {
+  color: #ffffff;
+}
+
+.btn-light {
+  --bs-btn-color: #000;
+  --bs-btn-bg: #f8f9fa;
+  --bs-btn-border-color: #f8f9fa;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #d3d4d5;
+  --bs-btn-hover-border-color: #c6c7c8;
+  --bs-btn-focus-shadow-rgb: 211, 212, 213;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #c6c7c8;
+  --bs-btn-active-border-color: #babbbc;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #f8f9fa;
+  --bs-btn-disabled-border-color: #f8f9fa;
 }
