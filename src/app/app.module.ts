@@ -8,6 +8,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     AuthLayoutComponent,
     AdminLayoutComponent,
     FooterComponent,
+    AdminDashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

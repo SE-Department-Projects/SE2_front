@@ -1,0 +1,108 @@
+/* Sidebar */
+.sidebar {
+    width: 235px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #0a1029;
+    padding-top: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+a i {
+    color: white;
+}
+
+.sidebar .nav-item {
+    padding: 10px;
+}
+
+.sidebar .nav-link {
+    color: white;
+}
+
+.sidebar .nav-link:hover {
+    /* background-color: #e2e6ea; */
+    color: var(--secondary-color);
+}
+
+/* Main content */
+.main-content {
+    margin-left: 235px;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.main-content.shifted {
+    margin-left: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #0a1029;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Sidebar Toggle Button */
+.toggle-btn {
+    display: block;
+    cursor: pointer;
+}
+
+.toggle-btn .navbar-toggler-icon {
+    background-color: #000;
+    width: 30px;
+    height: 3px;
+    display: block;
+    position: relative;
+}
+
+.toggle-btn .navbar-toggler-icon::before,
+.toggle-btn .navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+}
+
+.toggle-btn .navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.toggle-btn .navbar-toggler-icon::after {
+    top: 8px;
+}
+
+/* Hide sidebar on small screens */
+#sidebar-toggle {
+    display: none;
+}
+
+#sidebar-toggle:checked+.sidebar {
+    transform: translateX(0);
+}
+
+#sidebar-toggle:checked+.sidebar+.main-content {
+    margin-left: 235px;
+}
+
+/* Adjust navbar when sidebar is visible */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content.shifted {
+        margin-left: 0;
+    }
+
+    #sidebar-toggle:checked~.sidebar+.main-content {
+        margin-left: 200px;
+    }
+}
