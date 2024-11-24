@@ -11,6 +11,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password.component';
+import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ResetPasswordComponent } from './pages/auth/reset-password/reset-passwo
     FooterComponent,
     LoginComponent,
     ResetPasswordComponent,
+    AdminDashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
