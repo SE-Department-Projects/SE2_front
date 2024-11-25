@@ -2,7 +2,13 @@
 :root {
   --primary-color: #000319;
   --secondary-color: #01fc8d;
+  --tertiary-color: #0a1029;
   --font-size: 16px;
+}
+
+
+a {
+  text-decoration: none;
 }
 
 /* Universal reset */
@@ -17,6 +23,7 @@
   outline: 0;
   text-decoration: none;
   list-style: none;
+
 }
 
 /* Use variables */
@@ -24,6 +31,7 @@ body {
   font-size: var(--font-size);
   background-color: var(--primary-color);
   color: var(--secondary-color);
+
   /* box-sizing: border-box; */
 }
 

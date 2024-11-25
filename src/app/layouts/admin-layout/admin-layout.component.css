@@ -23,7 +23,6 @@
 }
 
 .sidebar .nav-link:hover {
-    /* background-color: #e2e6ea; */
     color: var(--secondary-color);
 }
 
@@ -38,10 +37,15 @@
     margin-left: 0;
 }
 
-/* Navbar */
+/* Navbar - Make it fixed */
 .navbar {
-    background-color: #0a1029;
+    background-color: var(--tertiary-color);
     transition: margin-left 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .navbar i {
@@ -118,6 +122,5 @@
 }
 
 .navbar {
-    /* #FFFFFF2B */
     border-bottom: solid 2px #FFFFFF2B;
 }

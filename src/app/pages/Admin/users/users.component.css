@@ -1,16 +1,16 @@
 .table-card {
     background-color: var(--tertiary-color);
+    /* background-color: aqua; */
     padding: 12px;
     border-radius: 12px;
 }
-
 
 .table-title {
     color: white;
 }
 
 .table-title a {
-    color: var(--secondary-color);
+    color: white;
 }
 
 .table-title a:hover {
@@ -23,6 +23,3 @@
     padding: 0;
     border: solid 2px var(--secondary-color);
 } */
-
-
-

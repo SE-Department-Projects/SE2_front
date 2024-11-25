@@ -1,0 +1,30 @@
+<div class="text-center m-5">{{ role }}</div>
+<div class="col-md-12">
+  <div class="table-card">
+    <div
+      class="table-title d-flex align-items-center justify-content-between px-2"
+    >
+      <div class="form">
+        <input
+          type="search"
+          style="border: none"
+          class="form-control form-input"
+          placeholder="Search anything..."
+        />
+      </div>
+      <!-- Align button to the end -->
+      <app-button
+        btnClass="btn rounded-pill"
+        style="background-color: var(--secondary-color); border-radius: 12px"
+        text="Add User"
+        (btnClick)="addUser()"
+      ></app-button>
+    </div>
+    <app-table
+      [columns]="tableColumns"
+      [data]="tableData"
+      [actions]="tableActions"
+      (actionClick)="($event)"
+    ></app-table>
+  </div>
+</div>

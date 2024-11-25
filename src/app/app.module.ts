@@ -15,6 +15,7 @@ import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-das
 import { TableComponent } from './shared/components/table/table.component';
 import { CardInfoComponent } from './shared/components/card-info/card-info.component';
 import { UsersManagementComponent } from './pages/Admin/users-management/users-management.component';
+import { UsersComponent } from './pages/Admin/users/users.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UsersManagementComponent } from './pages/Admin/users-management/users-m
     TableComponent,
     CardInfoComponent,
     UsersManagementComponent,
+    UsersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

@@ -1,0 +1,14 @@
+table {
+    background-color: transparent;
+}
+
+
+thead th {
+    background-color: #0a1029;
+    color: var(--secondary-color);
+}
+
+tbody tr td {
+    background-color: #0a1029;
+    color: white;
+}

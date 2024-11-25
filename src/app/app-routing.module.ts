@@ -7,6 +7,7 @@ import { ResetPasswordComponent } from './pages/auth/reset-password/reset-passwo
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { UsersManagementComponent } from './pages/Admin/users-management/users-management.component';
 import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
+import { UsersComponent } from './pages/Admin/users/users.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'usersManagement',
         component: UsersManagementComponent,
+      },
+      {
+        path: 'users/:role',
+        component: UsersComponent,
       },
     ],
   },
