@@ -12,6 +12,9 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password.component';
 import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
+import { TableComponent } from './shared/components/table/table.component';
+import { CardInfoComponent } from './shared/components/card-info/card-info.component';
+import { UsersManagementComponent } from './pages/Admin/users-management/users-management.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-das
     LoginComponent,
     ResetPasswordComponent,
     AdminDashboardComponent,
+    TableComponent,
+    CardInfoComponent,
+    UsersManagementComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

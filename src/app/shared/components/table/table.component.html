@@ -1,0 +1,27 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <!-- Dynamic column headers -->
+      <th *ngFor="let col of columns">{{ col.header }}</th>
+      <!-- Actions header -->
+      <th *ngIf="actions.length > 0">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Dynamic rows -->
+    <tr *ngFor="let row of data">
+      <!-- Dynamic cells -->
+      <td *ngFor="let col of columns">{{ row[col.field] }}</td>
+      <!-- Action buttons -->
+      <td *ngIf="actions.length > 0">
+        <button
+          *ngFor="let action of actions"
+          class="btn btn-sm"
+          (click)="onActionClick(action.label, row)"
+        >
+          <i [class]="'fa fa-' + action.icon"></i> {{ action.label }}
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

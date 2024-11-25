@@ -5,6 +5,8 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password.component';
 // import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { UsersManagementComponent } from './pages/Admin/users-management/users-management.component';
+import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {
@@ -22,8 +24,20 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'AdminDashboard',
+    path: 'admin',
     component: AdminLayoutComponent,
+    title: 'Admin',
+    children: [
+      { path: '', redirectTo: 'adminDashboard', pathMatch: 'full' },
+      {
+        path: 'adminDashboard',
+        component: AdminDashboardComponent,
+      },
+      {
+        path: 'usersManagement',
+        component: UsersManagementComponent,
+      },
+    ],
   },
 ];
 

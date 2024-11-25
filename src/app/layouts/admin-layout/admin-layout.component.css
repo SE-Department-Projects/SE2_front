@@ -14,10 +14,6 @@
     transform: translateX(-100%);
 }
 
-a i {
-    color: white;
-}
-
 .sidebar .nav-item {
     padding: 10px;
 }
@@ -46,6 +42,10 @@ a i {
 .navbar {
     background-color: #0a1029;
     transition: margin-left 0.3s ease-in-out;
+}
+
+.navbar i {
+    color: white;
 }
 
 /* Sidebar Toggle Button */
@@ -105,4 +105,19 @@ a i {
     #sidebar-toggle:checked~.sidebar+.main-content {
         margin-left: 200px;
     }
+}
+
+/* ====================  */
+
+.active-link {
+    color: var(--light-color) !important;
+}
+
+.sidebar {
+    border-right: solid 2px #FFFFFF2B;
+}
+
+.navbar {
+    /* #FFFFFF2B */
+    border-bottom: solid 2px #FFFFFF2B;
 }
