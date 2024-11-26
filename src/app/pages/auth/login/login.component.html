@@ -2,12 +2,11 @@
   <div class="col-md-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Log Into Your Account</h4>
-        <p class="card-description">Enter Your Email And Password</p>
+        <h4 class="card-title mb-4">Log Into Your Account</h4>
         <form
           [formGroup]="loginForm"
           class="forms-sample"
-          (ngSubmit)="logInTest()"
+          (ngSubmit)="handleLogin()"
         >
           <div class="form-group row">
             <label for="email" class="col-sm-3 col-form-label">Email</label>
@@ -76,7 +75,7 @@
 
           <div class="d-flex justify-content-end">
             <app-button
-              btnClass="btn btn-gradient-success me-2"
+              btnClass="btn btn-inverse-success btn-fw"
               text="Log In"
             ></app-button>
           </div>

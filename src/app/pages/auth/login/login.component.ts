@@ -20,7 +20,7 @@ export class LoginComponent {
     ],
   });
 
-  logInTest(): void {
+  handleLogin(): void {
     console.log('Log In');
   }
 }
