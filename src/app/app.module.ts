@@ -16,6 +16,10 @@ import { TableComponent } from './shared/components/table/table.component';
 import { CardInfoComponent } from './shared/components/card-info/card-info.component';
 import { UsersManagementComponent } from './pages/Admin/users-management/users-management.component';
 import { UsersComponent } from './pages/Admin/users/users.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { ObserverLayoutComponent } from './layouts/observer-layout/observer-layout.component';
+import { ObserverDashboardComponent } from './pages/observer/observer-dashboard/observer-dashboard.component';
+import { DetectionHistoryComponent } from './pages/observer/detection-history/detection-history.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { UsersComponent } from './pages/Admin/users/users.component';
     CardInfoComponent,
     UsersManagementComponent,
     UsersComponent,
+    NotfoundComponent,
+    ObserverLayoutComponent,
+    ObserverDashboardComponent,
+    DetectionHistoryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

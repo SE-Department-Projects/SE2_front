@@ -8,6 +8,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { UsersManagementComponent } from './pages/Admin/users-management/users-management.component';
 import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
 import { UsersComponent } from './pages/Admin/users/users.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { ObserverLayoutComponent } from './layouts/observer-layout/observer-layout.component';
+import { ObserverDashboardComponent } from './pages/observer/observer-dashboard/observer-dashboard.component';
+import { DetectionHistoryComponent } from './pages/observer/detection-history/detection-history.component';
 
 const routes: Routes = [
   {
@@ -17,10 +21,12 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+        title: 'Login',
       },
       {
         path: 'resetPassword',
         component: ResetPasswordComponent,
+        title: 'Reset Password',
       },
     ],
   },
@@ -43,6 +49,33 @@ const routes: Routes = [
         component: UsersComponent,
       },
     ],
+  },
+  {
+    path: 'observer',
+    component: ObserverLayoutComponent,
+    title: 'Observer',
+    children: [
+      {
+        path: '',
+        redirectTo: 'observerDashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'observerDashboard',
+        component: ObserverDashboardComponent,
+        title: 'Dashboard',
+      },
+      {
+        path: 'detectionHistory',
+        component: DetectionHistoryComponent,
+        title: 'Detection History',
+      },
+    ],
+  },
+  {
+    path: '**',
+    component: NotfoundComponent,
+    title: 'Page Not Found',
   },
 ];
 
