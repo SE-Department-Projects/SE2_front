@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
   // Define columns
   tableColumns = [
     { field: 'id', header: 'ID' },
@@ -25,12 +25,9 @@ export class UsersComponent {
   ];
 
   // Define actions
-  tableActions = [
-    // { label: 'Edit', icon: 'edit' },
-    // { label: 'Delete', icon: 'trash' },
-  ];
+  tableActions = [{ icon: 'eye' }, { icon: 'edit' }, { icon: 'trash' }];
 
-  users: any[] = [];
+  // users: any[] = [];
   role: string | null = '';
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -44,14 +41,10 @@ export class UsersComponent {
   getAllUsers(role: string) {
     console.log('Fetching all users with role:', role);
     if (role === 'admins') {
-      this.users = [
-        { id: 1, name: 'Admin 1', email: 'admin1@example.com' },
-        { id: 2, name: 'Admin 2', email: 'admin2@example.com' },
-      ];
+      // this.users = [
+      //   { id: 1, name: 'Admin 1', email: 'admin1@example.com' },
+      //   { id: 2, name: 'Admin 2', email: 'admin2@example.com' },
+      // ];
     }
-  }
-
-  addUser() {
-    console.log('add user');
   }
 }

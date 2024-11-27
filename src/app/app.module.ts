@@ -20,6 +20,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ObserverLayoutComponent } from './layouts/observer-layout/observer-layout.component';
 import { ObserverDashboardComponent } from './pages/observer/observer-dashboard/observer-dashboard.component';
 import { DetectionHistoryComponent } from './pages/observer/detection-history/detection-history.component';
+import { AddUserComponent } from './pages/Admin/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DetectionHistoryComponent } from './pages/observer/detection-history/de
     ObserverLayoutComponent,
     ObserverDashboardComponent,
     DetectionHistoryComponent,
+    AddUserComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

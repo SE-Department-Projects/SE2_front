@@ -13,18 +13,29 @@
         />
       </div>
       <!-- Align button to the end -->
+
       <app-button
-        btnClass="btn rounded-pill"
+        btnClass="btn rounded-pill "
         style="background-color: var(--secondary-color); border-radius: 12px"
         text="Add User"
-        (btnClick)="addUser()"
-      ></app-button>
+        [routerLink]="'/admin/addUser'"
+      >
+      </app-button>
     </div>
-    <app-table
-      [columns]="tableColumns"
-      [data]="tableData"
-      [actions]="tableActions"
-      (actionClick)="($event)"
-    ></app-table>
+
+    <!-- Check if there is data in tableData -->
+    <ng-container *ngIf="tableData.length > 0; else noUsers">
+      <app-table
+        [columns]="tableColumns"
+        [data]="tableData"
+        [actions]="tableActions"
+        (actionClick)="($event)"
+      ></app-table>
+    </ng-container>
+
+    <!-- Template for when there are no users -->
+    <ng-template #noUsers>
+      <div class="text-center m-3">No users available.</div>
+    </ng-template>
   </div>
 </div>

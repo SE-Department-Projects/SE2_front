@@ -1,0 +1,8 @@
+.card {
+    background-color: var(--tertiary-color);
+    color: white;
+}
+
+.card-title {
+    border-left: 5px red solid;
+}

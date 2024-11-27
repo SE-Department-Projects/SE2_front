@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -14,7 +8,7 @@ import {
 export class TableComponent {
   @Input() columns: Array<{ field: string; header: string }> = [];
   @Input() data: Array<any> = [];
-  @Input() actions: Array<{ label: string; icon: string }> = [];
+  @Input() actions: Array<{ label?: string; icon: string }> = [];
   @Output() actionClick = new EventEmitter<{ action: string; row: any }>();
 
   onActionClick(action: string, row: any) {
