@@ -21,6 +21,11 @@ import { ObserverLayoutComponent } from './layouts/observer-layout/observer-layo
 import { ObserverDashboardComponent } from './pages/observer/observer-dashboard/observer-dashboard.component';
 import { DetectionHistoryComponent } from './pages/observer/detection-history/detection-history.component';
 import { AddUserComponent } from './pages/Admin/add-user/add-user.component';
+import { TechnicianLayoutComponent } from './layouts/technician-layout/technician-layout.component';
+import { TechnicianDashboardComponent } from './pages/technician/technician-dashboard/technician-dashboard.component';
+import { MapComponent } from './shared/components/map/map.component';
+import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -42,8 +47,18 @@ import { AddUserComponent } from './pages/Admin/add-user/add-user.component';
     ObserverDashboardComponent,
     DetectionHistoryComponent,
     AddUserComponent,
+    TechnicianLayoutComponent,
+    TechnicianDashboardComponent,
+    MaintainanceLogComponent,
+    MapComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    GoogleMapsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

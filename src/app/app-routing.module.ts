@@ -13,6 +13,9 @@ import { ObserverLayoutComponent } from './layouts/observer-layout/observer-layo
 import { ObserverDashboardComponent } from './pages/observer/observer-dashboard/observer-dashboard.component';
 import { DetectionHistoryComponent } from './pages/observer/detection-history/detection-history.component';
 import { AddUserComponent } from './pages/Admin/add-user/add-user.component';
+import { TechnicianLayoutComponent } from './layouts/technician-layout/technician-layout.component';
+import { TechnicianDashboardComponent } from './pages/technician/technician-dashboard/technician-dashboard.component';
+import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
 
 const routes: Routes = [
   {
@@ -74,6 +77,28 @@ const routes: Routes = [
         path: 'detectionHistory',
         component: DetectionHistoryComponent,
         title: 'Detection History',
+      },
+    ],
+  },
+  {
+    path: 'technician',
+    component: TechnicianLayoutComponent,
+    title: 'Technician',
+    children: [
+      {
+        path: '',
+        redirectTo: 'technicianDashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'technicianDashboard',
+        component: TechnicianDashboardComponent,
+        title: 'Dashboard',
+      },
+      {
+        path: 'maintainanceLog',
+        component: MaintainanceLogComponent,
+        title: 'Maintainance Log',
       },
     ],
   },

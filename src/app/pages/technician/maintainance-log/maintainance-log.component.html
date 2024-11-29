@@ -1,0 +1,25 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-4">
+      <app-card-info
+        title="Total Jobs Assigned"
+        [count]="tableData.length"
+      ></app-card-info>
+    </div>
+    <div class="col-md-4">
+      <app-card-info title="Resolved Jobs" [count]="4"></app-card-info>
+    </div>
+    <div class="col-md-4">
+      <app-card-info title="Unresolved Jobs" [count]="7"></app-card-info>
+    </div>
+  </div>
+
+  <div class="my-4">
+    <app-table
+      [columns]="tableColumns"
+      [data]="tableData"
+      [actions]="tableActions"
+      (actionClick)="handleAction($event)"
+    ></app-table>
+  </div>
+</div>
