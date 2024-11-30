@@ -26,6 +26,7 @@ import { TechnicianDashboardComponent } from './pages/technician/technician-dash
 import { MapComponent } from './shared/components/map/map.component';
 import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     TechnicianDashboardComponent,
     MaintainanceLogComponent,
     MapComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

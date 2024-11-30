@@ -38,6 +38,15 @@ export class UsersComponent {
     });
   }
 
+  actionClick(action: { icon: string; data: any }): void {
+    console.log('Aaaaaaaaa');
+
+    if (action.icon === 'eye') {
+      console.log('Aaaaaaaaa');
+      // Navigate to the user profile page with the user ID (e.g., user/1)
+      this.router.navigate(['/user-profile']);
+    }
+  }
   getAllUsers(role: string) {
     console.log('Fetching all users with role:', role);
     if (role === 'admins') {

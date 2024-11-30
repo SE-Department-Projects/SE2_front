@@ -12,15 +12,18 @@ export class AddUserComponent {
 
   constructor(private _FormBuilder: FormBuilder) {}
 
-  loginForm: FormGroup = this._FormBuilder.group({
-    email: [null, [Validators.required, Validators.email]],
-    password: [
-      null,
-      [Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{6,20}$/)],
-    ],
+  addUserForm: FormGroup = this._FormBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    Username: ['', Validators.required],
+    role: ['', Validators.required],
   });
 
-  handleLogin(): void {
-    console.log('Log In');
+  addUser(): void {
+    if (this.addUserForm.valid) {
+      console.log('Log In');
+      console.log(this.addUserForm.value);
+    } else {
+      console.error('Form is invalid');
+    }
   }
 }
