@@ -25,7 +25,11 @@ export class UsersComponent {
   ];
 
   // Define actions
-  tableActions = [{ icon: 'eye' }, { icon: 'edit' }, { icon: 'trash' }];
+  tableActions = [
+    { lable: 'eye', icon: 'eye' },
+    { icon: 'edit' },
+    { icon: 'trash' },
+  ];
 
   // users: any[] = [];
   role: string | null = '';
@@ -38,15 +42,27 @@ export class UsersComponent {
     });
   }
 
-  actionClick(action: { icon: string; data: any }): void {
-    console.log('Aaaaaaaaa');
-
-    if (action.icon === 'eye') {
-      console.log('Aaaaaaaaa');
-      // Navigate to the user profile page with the user ID (e.g., user/1)
-      this.router.navigate(['/user-profile']);
+  actionClick(event: { action: { label: string; icon: string }; row: any }) {
+    console.log(event);
+    const action = event.action;
+    const row = event.row;
+    switch (action.icon) {
+      case 'eye':
+        this.router.navigate(['/userProfile',  row.id]); // Use row data (user data)
+        break;
+      case 'edit':
+        // this.router.navigate(['/admin/editUser', row.id]);
+        break;
+      case 'trash':
+        if (confirm('Are you sure you want to delete this user?')) {
+          // Handle delete functionality here, using row data
+        }
+        break;
+      default:
+        console.log('Unknown action', action);
     }
   }
+
   getAllUsers(role: string) {
     console.log('Fetching all users with role:', role);
     if (role === 'admins') {

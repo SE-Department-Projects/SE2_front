@@ -27,6 +27,8 @@ import { MapComponent } from './shared/components/map/map.component';
 import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { UserProfileComponent } from './shared/components/user-profile/user-prof
     FormsModule,
     ReactiveFormsModule,
     GoogleMapsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -98,12 +98,12 @@ export class MaintainanceLogComponent {
 
   tableActions = [{ label: 'Send Report', icon: 'envelope' }];
 
-  handleAction(event: { action: string; row: any }): void {
-    const { action, row } = event;
-    if (action === 'Send Report') {
-      this.sendReport(row);
-    }
-  }
+  // handleAction(event: { action: string; row: any }): void {
+  //   const { action, row } = event;
+  //   if (action === 'Send Report') {
+  //     this.sendReport(row);
+  //   }
+  // }
 
   sendReport(row: any): void {
     console.log(`Send Report: Job ID ${row.jobID}`);

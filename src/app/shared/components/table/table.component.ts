@@ -9,9 +9,17 @@ export class TableComponent {
   @Input() columns: Array<{ field: string; header: string }> = [];
   @Input() data: Array<any> = [];
   @Input() actions: Array<{ label?: string; icon: string }> = [];
-  @Output() actionClick = new EventEmitter<{ action: string; row: any }>();
+  @Output() actionClick = new EventEmitter<{
+    action: { label: string; icon: string };
+    row: any;
+  }>();
 
-  onActionClick(action: string, row: any) {
-    this.actionClick.emit({ action, row });
+  onActionClick(action: { label?: string; icon: string }, row: any) {
+    console.log(action, row);
+
+    this.actionClick.emit({
+      action: { label: action.label ?? '', icon: action.icon },
+      row,
+    });
   }
 }

@@ -16,6 +16,7 @@ import { AddUserComponent } from './pages/Admin/add-user/add-user.component';
 import { TechnicianLayoutComponent } from './layouts/technician-layout/technician-layout.component';
 import { TechnicianDashboardComponent } from './pages/technician/technician-dashboard/technician-dashboard.component';
 import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
+import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -101,6 +102,11 @@ const routes: Routes = [
         title: 'Maintainance Log',
       },
     ],
+  },
+  {
+    path: 'userProfile/:id',
+    component: UserProfileComponent,
+    title: 'profile',
   },
   {
     path: '**',
