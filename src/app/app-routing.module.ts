@@ -17,12 +17,15 @@ import { TechnicianLayoutComponent } from './layouts/technician-layout/technicia
 import { TechnicianDashboardComponent } from './pages/technician/technician-dashboard/technician-dashboard.component';
 import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
+import { CheckEmailComponent } from './shared/components/check-email/check-email.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
     children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+
       {
         path: 'login',
         component: LoginComponent,
@@ -107,6 +110,11 @@ const routes: Routes = [
     path: 'userProfile/:id',
     component: UserProfileComponent,
     title: 'profile',
+  },
+  {
+    path: 'checkEmail',
+    component: CheckEmailComponent,
+    title: 'Check Email',
   },
   {
     path: '**',

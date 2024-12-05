@@ -29,7 +29,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CheckEmailComponent } from './shared/components/check-email/check-email.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { ToastrModule } from 'ngx-toastr';
     MaintainanceLogComponent,
     MapComponent,
     UserProfileComponent,
+    CheckEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     GoogleMapsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

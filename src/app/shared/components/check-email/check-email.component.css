@@ -1,0 +1,15 @@
+.card {
+    background-color: var(--tertiary-color);
+}
+
+.card-body {
+    margin: auto;
+    flex: 1 1 auto;
+    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+}
+
+.card-title {
+    color: var(--secondary-color);
+    padding-left: 10px;
+}
+

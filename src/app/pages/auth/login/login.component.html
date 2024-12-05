@@ -2,6 +2,9 @@
   <div class="col-md-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
+        <div *ngIf="messageError" class="alert alert-danger mt-3 text-center">
+          {{ messageError }}
+        </div>
         <h4 class="card-title mb-4">Log Into Your Account</h4>
         <form
           [formGroup]="loginForm"
@@ -19,20 +22,27 @@
                 id="email"
                 placeholder="Email"
               />
-            </div>
-            <div
-              class="error-container position-absolute"
-              *ngIf="
-                loginForm.get('email')?.errors &&
-                (loginForm.get('email')?.touched || inputEmail.value.length > 0)
-              "
-            >
-              <p *ngIf="loginForm.get('email')?.getError('required')">
-                Email Required
-              </p>
-              <p *ngIf="loginForm.get('email')?.getError('email')">
-                Email Invalid
-              </p>
+              <div
+                class="error-container position-absolute"
+                *ngIf="
+                  loginForm.get('email')?.errors &&
+                  (loginForm.get('email')?.touched ||
+                    inputEmail.value.length > 0)
+                "
+              >
+                <p
+                  *ngIf="loginForm.get('email')?.getError('required')"
+                  class="text-danger"
+                >
+                  Email Required
+                </p>
+                <p
+                  *ngIf="loginForm.get('email')?.getError('email')"
+                  class="text-danger"
+                >
+                  Email Invalid
+                </p>
+              </div>
             </div>
           </div>
 
@@ -58,7 +68,10 @@
                   inputPassword.value.length > 0)
               "
             >
-              <p *ngIf="loginForm.get('password')?.getError('required')">
+              <p
+                *ngIf="loginForm.get('password')?.getError('required')"
+                class="text-danger"
+              >
                 Password Required
               </p>
             </div>
