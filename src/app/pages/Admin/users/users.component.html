@@ -1,4 +1,4 @@
-<div class="text-center m-5">{{ role }}</div>
+<div class="text-start m-5">{{ role | uppercase }} {{ totalCount }}</div>
 <div class="col-md-12">
   <div class="table-card">
     <div
@@ -23,11 +23,10 @@
       </app-button>
     </div>
 
-    <!-- Check if there is data in tableData -->
-    <ng-container *ngIf="tableData.length > 0; else noUsers">
+    <ng-container *ngIf="users.length > 0; else noUsers">
       <app-table
         [columns]="tableColumns"
-        [data]="tableData"
+        [data]="users"
         [actions]="tableActions"
         (actionClick)="actionClick($event)"
       ></app-table>

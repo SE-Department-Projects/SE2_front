@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { count } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -14,7 +13,6 @@ export class LoginComponent {
   messageError: string = '';
   isLoading: boolean = false;
   counter = 1;
-  role = 'admin';
 
   constructor(
     private _FormBuilder: FormBuilder,
@@ -53,8 +51,8 @@ export class LoginComponent {
       this._AuthService.login(this.loginForm.value).subscribe({
         next: (response) => {
           if (response.status === 'success') {
-            localStorage.setItem('token', response.token);
-            this.redirectBasedOnRole();
+            this._AuthService.decodeUserData(response.token, response.role);
+            this.redirectBasedOnRole(response.role);
           }
         },
         error: (err) => {
@@ -69,14 +67,14 @@ export class LoginComponent {
     }
   }
 
-  private redirectBasedOnRole(): void {
+  private redirectBasedOnRole(role: string): void {
     this.counter = 1;
 
-    if (this.role === 'admin') {
+    if (role === 'admin') {
       this._Router.navigate(['/admin']);
-    } else if (this.role === 'technician') {
+    } else if (role === 'technician') {
       this._Router.navigate(['/technician']);
-    } else if (this.role === 'observer') {
+    } else if (role === 'observer') {
       this._Router.navigate(['/observer']);
     }
   }

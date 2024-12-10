@@ -2,24 +2,33 @@
   <div class="row">
     <div class="col-md-3">
       <a [routerLink]="['/admin/users', 'admin']">
-        <app-card-info title="Admins" [count]="10"></app-card-info
+        <app-card-info title="Admins" [count]="totalAdminsCount"></app-card-info
       ></a>
     </div>
     <div class="col-md-3">
       <a [routerLink]="['/admin/users', 'technician']">
-        <app-card-info title="Technicians" [count]="25"></app-card-info
+        <app-card-info
+          title="Technicians"
+          [count]="totalTechnicianCount"
+        ></app-card-info
       ></a>
     </div>
 
     <div class="col-md-3">
       <a [routerLink]="['/admin/users', 'vendor']">
-        <app-card-info title="Vendors" [count]="25"></app-card-info
+        <app-card-info
+          title="Vendors"
+          [count]="totalVendorsCount"
+        ></app-card-info
       ></a>
     </div>
 
     <div class="col-md-3">
       <a [routerLink]="['/admin/users', 'observer']">
-        <app-card-info title="Observers" [count]="60"></app-card-info
+        <app-card-info
+          title="Observers"
+          [count]="totalObserverCount"
+        ></app-card-info
       ></a>
     </div>
   </div>
@@ -34,11 +43,13 @@
           <a [routerLink]="['/admin/users', 'admin']">View All</a>
         </div>
         <app-table
+          *ngIf="adminsTableData.length > 0; else NoUsers"
           [columns]="tableColumns"
-          [data]="tableData"
+          [data]="adminsTableData | slice : 0 : 5"
           [actions]="tableActions"
           (actionClick)="($event)"
-        ></app-table>
+        >
+        </app-table>
       </div>
     </div>
     <div class="col-md-6">
@@ -51,7 +62,7 @@
         </div>
         <app-table
           [columns]="tableColumns"
-          [data]="tableData"
+          [data]="technicianTableData | slice : 0 : 5"
           [actions]="tableActions"
           (actionClick)="($event)"
         ></app-table>
@@ -64,11 +75,11 @@
           class="table-title d-flex justify-content-between align-items-center px-2"
         >
           <h3>Latest Vendors</h3>
-          <a [routerLink]="['/admin/users', 'Vendor']">View All</a>
+          <a [routerLink]="['/admin/users', 'vendor']">View All</a>
         </div>
         <app-table
           [columns]="tableColumns"
-          [data]="tableData"
+          [data]="vendorsTableData | slice : 0 : 5"
           [actions]="tableActions"
           (actionClick)="($event)"
         ></app-table>
@@ -85,7 +96,7 @@
         </div>
         <app-table
           [columns]="tableColumns"
-          [data]="tableData"
+          [data]="observersTableData | slice : 0 : 5"
           [actions]="tableActions"
           (actionClick)="($event)"
         ></app-table>
@@ -93,3 +104,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #NoUsers>
+  <h3 class="pt-3 text-center">There are no users!!</h3>
+</ng-template>

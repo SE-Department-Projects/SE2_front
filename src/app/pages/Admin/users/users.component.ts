@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/core/models/user';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-users',
@@ -7,22 +10,37 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent {
-  constructor(private route: ActivatedRoute, private router: Router) {}
-  // Define columns
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private _UsersService: UsersService,
+    private _Toastr: ToastrService
+  ) {}
+
+  users: any[] = [];
+  totalCount: Number = 0;
+  role: string | null = '';
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.role = params.get('role');
+      console.log(this.role);
+      if (this.role) {
+        this.users = this.getAllUsers(this.role);
+      }
+    });
+  }
+
   tableColumns = [
-    { field: 'id', header: 'ID' },
-    { field: 'name', header: 'Name' },
+    { field: 'number', header: '#' },
+    { field: '_id', header: 'ID' },
+    { field: 'username', header: 'Name' },
     { field: 'email', header: 'Email' },
+    { field: 'CreatedAt', header: 'Created At' },
   ];
 
   // Example data
-  tableData = [
-    { id: 1, name: 'Alice', email: 'alice@example.com' },
-    { id: 2, name: 'Bob', email: 'bob@example.com' },
-    { id: 3, name: 'Charlie', email: 'charlie@example.com' },
-    { id: 3, name: 'Charlie', email: 'charlie@example.com' },
-    { id: 3, name: 'Charlie', email: 'charlie@example.com' },
-  ];
+  tableData = [];
 
   // Define actions
   tableActions = [
@@ -31,45 +49,61 @@ export class UsersComponent {
     { icon: 'trash' },
   ];
 
-  // users: any[] = [];
-  role: string | null = '';
-  ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.role = params.get('role');
-      if (this.role) {
-        this.getAllUsers(this.role);
-      }
-    });
-  }
-
   actionClick(event: { action: { label: string; icon: string }; row: any }) {
     console.log(event);
     const action = event.action;
     const row = event.row;
     switch (action.icon) {
       case 'eye':
-        this.router.navigate(['/userProfile',  row.id]); // Use row data (user data)
+        this.router.navigate(['/userProfile', row.id]);
         break;
       case 'edit':
         // this.router.navigate(['/admin/editUser', row.id]);
+
         break;
       case 'trash':
-        if (confirm('Are you sure you want to delete this user?')) {
-          // Handle delete functionality here, using row data
-        }
+        this.deleteUser(row.id, row.username);
         break;
       default:
         console.log('Unknown action', action);
     }
   }
 
-  getAllUsers(role: string) {
-    console.log('Fetching all users with role:', role);
-    if (role === 'admins') {
-      // this.users = [
-      //   { id: 1, name: 'Admin 1', email: 'admin1@example.com' },
-      //   { id: 2, name: 'Admin 2', email: 'admin2@example.com' },
-      // ];
+  getAllUsers(role: string): any {
+    this._UsersService.GetAllByRole(role).subscribe({
+      next: (response) => {
+        if (response.status === 'success') {
+          this.users = response.data.users.map((user: User, index: number) => ({
+            ...user,
+            number: index + 1,
+          }));
+
+          this.totalCount = response.results;
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  deleteUser(id: string, username: string) {
+    if (confirm('Are you sure you want to delete this user?')) {
+      this._UsersService.deleteUserById(id).subscribe({
+        next: (response) => {
+          if (!response) {
+            if (this.role) {
+              this.users = this.getAllUsers(this.role);
+              this._Toastr.success('', `${username} deleted successfully`, {
+                timeOut: 4000,
+                positionClass: 'toast-top-right',
+                progressBar: true,
+                closeButton: true,
+              });
+            }
+          }
+        },
+      });
     }
   }
 }

@@ -29,8 +29,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CheckEmailComponent } from './shared/components/check-email/check-email.component';
+import { HttpInterceptorInterceptor } from './core/interceptors/http-interceptor.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +69,13 @@ import { CheckEmailComponent } from './shared/components/check-email/check-email
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorInterceptor,
+      multi: true, // This ensures that the interceptor will be added to the array of interceptors
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

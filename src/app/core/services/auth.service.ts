@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = environment.apiUrl;
-  constructor(private _HttpClient: HttpClient) {}
+  userLoginData: any;
 
-  user: any = {
-    email: 'admin@gmail.com',
-    password: 'newPass12',
-  };
+  constructor(private _HttpClient: HttpClient) {
+    this.userLoginData = {};
+  }
 
   login(userCredential: any): Observable<any> {
     return this._HttpClient.post(`${this.apiUrl}users/login`, userCredential);
+  }
+
+  decodeUserData(token: string, role: string) {
+    let decodeToken: any = jwtDecode(token);
+
+    this.userLoginData.token = token;
+    this.userLoginData.tokenDetails = decodeToken;
+    this.userLoginData.role = role;
+
+    localStorage.setItem('loggedInUser', JSON.stringify(this.userLoginData));
   }
 }
