@@ -1,0 +1,38 @@
+.table-card {
+  background-color: var(--tertiary-color);
+  /* background-color: aqua; */
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.table-title {
+  color: white;
+}
+
+.table-title a {
+  color: white;
+}
+
+.table-title a:hover {
+  text-decoration: underline;
+}
+
+/* ::ng-deep app-table tr:first-child i:first-of-type {
+    color: var(--secondary-color);
+} */
+
+::ng-deep table tbody tr td:last-child button:first-child i {
+  color: var(--secondary-color);
+}
+
+::ng-deep table tbody tr td:last-child button:nth-child(2) i {
+  color: blue;
+}
+
+::ng-deep table tbody tr td:last-child button:nth-child(3) i {
+  color: red;
+}
+
+::ng-deep table tbody tr td:last-child button i:hover {
+  color: white;
+}

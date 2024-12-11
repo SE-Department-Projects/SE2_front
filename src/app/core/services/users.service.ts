@@ -27,4 +27,12 @@ export class UsersService {
   deleteUserById(id: string) {
     return this._HttpClient.delete(`${this.apiUrl}users/deleteUser/${id}`);
   }
+
+  getCurrentUser(): Observable<any> {
+    return this._HttpClient.get(`${this.apiUrl}users/myInfo`);
+  }
+
+  updateProfile(data: any): Observable<any> {
+    return this._HttpClient.patch(`${this.apiUrl}users/updateMe`, data);
+  }
 }

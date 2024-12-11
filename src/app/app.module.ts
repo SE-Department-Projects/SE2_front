@@ -32,6 +32,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CheckEmailComponent } from './shared/components/check-email/check-email.component';
 import { HttpInterceptorInterceptor } from './core/interceptors/http-interceptor.interceptor';
+import { RobotConfigComponent } from './pages/Admin/robot-config/robot-config.component';
+import { AddRobotComponent } from './pages/Admin/add-robot/add-robot.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +60,8 @@ import { HttpInterceptorInterceptor } from './core/interceptors/http-interceptor
     MapComponent,
     UserProfileComponent,
     CheckEmailComponent,
+    RobotConfigComponent,
+    AddRobotComponent,
   ],
   imports: [
     BrowserModule,

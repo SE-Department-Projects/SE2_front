@@ -27,7 +27,7 @@
             <div class="col-sm-9">
               <input
                 #inputUsername
-                formControlName="userName"
+                formControlName="username"
                 type="text"
                 class="form-control"
                 id="Username"
@@ -37,25 +37,11 @@
             </div>
           </div>
 
-          <div class="form-group row py-2">
-            <label for="role" class="col-sm-3 col-form-label">User Role</label>
-            <div class="col-sm-9">
-              <input
-                #inputrole
-                formControlName="role"
-                type="text"
-                class="form-control"
-                id="role"
-                placeholder="role"
-                required
-              />
-            </div>
-          </div>
-
           <div class="d-flex justify-content-end">
             <app-button
               btnClass="btn btn-inverse-success btn-fw"
-              text="Update"
+              text="{{ isLoading ? 'Updating...' : 'Update' }}"
+              (btnClick)="updateProfile()"
             ></app-button>
           </div>
         </form>

@@ -18,6 +18,8 @@ import { TechnicianDashboardComponent } from './pages/technician/technician-dash
 import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
 import { CheckEmailComponent } from './shared/components/check-email/check-email.component';
+import { RobotConfigComponent } from './pages/Admin/robot-config/robot-config.component';
+import { AddRobotComponent } from './pages/Admin/add-robot/add-robot.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,14 @@ const routes: Routes = [
       {
         path: 'addUser',
         component: AddUserComponent,
+      },
+      {
+        path: 'robotConfiguration',
+        component: RobotConfigComponent,
+      },
+      {
+        path: 'addRobot',
+        component: AddRobotComponent,
       },
     ],
   },
@@ -107,7 +117,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'userProfile/:id',
+    path: 'userProfile',
     component: UserProfileComponent,
     title: 'profile',
   },

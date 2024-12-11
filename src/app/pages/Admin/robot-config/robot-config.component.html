@@ -1,0 +1,40 @@
+<div class="text-start m-5">Robot {{ totalCount }}</div>
+<div class="col-md-12">
+  <div class="table-card">
+    <div
+      class="table-title d-flex align-items-center justify-content-between px-2"
+    >
+      <div class="form">
+        <input
+          type="search"
+          style="border: none"
+          class="form-control form-input"
+          placeholder="Search anything..."
+        />
+      </div>
+      <!-- Align button to the end -->
+
+      <app-button
+        btnClass="btn rounded-pill "
+        style="background-color: var(--secondary-color); border-radius: 12px"
+        text="Add Robot"
+        [routerLink]="'/admin/addRobot'"
+      >
+      </app-button>
+    </div>
+
+    <ng-container *ngIf="robots.length > 0; else noRobots">
+      <app-table
+        [columns]="tableColumns"
+        [data]="robots"
+        [actions]="tableActions"
+        (actionClick)="actionClick($event)"
+      ></app-table>
+    </ng-container>
+
+    <!-- Template for when there are no users -->
+    <ng-template #noRobots>
+      <div class="text-center m-3">No Robots available.</div>
+    </ng-template>
+  </div>
+</div>
