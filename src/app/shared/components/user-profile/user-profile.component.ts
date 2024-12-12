@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from 'src/app/core/services/users.service';
 
@@ -27,7 +29,9 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private _FormBuilder: FormBuilder,
     private _UsersService: UsersService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
+    private location: Location
   ) {
     this.userForm = this._FormBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -82,5 +86,13 @@ export class UserProfileComponent implements OnInit {
       progressBar: true,
       closeButton: true,
     });
+  }
+
+  navigateTo(path: String): void {
+    this.router.navigate([path]);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

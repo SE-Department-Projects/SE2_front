@@ -23,16 +23,19 @@
   </ul>
 </div>
 
-<!-- Top Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bb">
   <div class="container-fluid">
-    <!-- Sidebar Toggle Button (Hamburger) -->
     <label class="navbar-toggler toggle-btn" for="sidebar-toggle">
       <span class="navbar-toggler-icon"></span>
     </label>
     <a class="navbar-brand" href="#">Purple</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="../userProfile"
+            ><i class="fa fa-user"></i
+          ></a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="fas fa-envelope"></i></a>
         </li>
@@ -43,7 +46,9 @@
           <a class="nav-link" href="#"><i class="fas fa-cogs"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-power-off"></i></a>
+          <a class="nav-link" (click)="logout()"
+            ><i class="fas fa-power-off"></i
+          ></a>
         </li>
       </ul>
     </div>

@@ -35,6 +35,8 @@ import { HttpInterceptorInterceptor } from './core/interceptors/http-interceptor
 import { RobotConfigComponent } from './pages/Admin/robot-config/robot-config.component';
 import { AddRobotComponent } from './pages/Admin/add-robot/add-robot.component';
 import { UserDetailsComponent } from './shared/components/user-details/user-details.component';
+import { UpdatePasswordComponent } from './shared/components/update-password/update-password.component';
+import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +66,8 @@ import { UserDetailsComponent } from './shared/components/user-details/user-deta
     RobotConfigComponent,
     AddRobotComponent,
     UserDetailsComponent,
+    UpdatePasswordComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,

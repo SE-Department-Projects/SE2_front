@@ -4,6 +4,7 @@
       <div class="card-body">
         <h4 class="card-title mb-4">User Profile</h4>
         <form [formGroup]="userForm" class="forms-sample">
+          <!-- Email Field -->
           <div class="form-group row py-2">
             <label for="email" class="col-sm-3 col-form-label">Email</label>
             <div class="col-sm-9">
@@ -20,6 +21,7 @@
             </div>
           </div>
 
+          <!-- Username Field -->
           <div class="form-group row py-2">
             <label for="Username" class="col-sm-3 col-form-label"
               >User Name</label
@@ -37,12 +39,24 @@
             </div>
           </div>
 
-          <div class="d-flex justify-content-end">
-            <app-button
-              btnClass="btn btn-inverse-success btn-fw"
-              text="{{ isLoading ? 'Updating...' : 'Update' }}"
-              (btnClick)="updateProfile()"
-            ></app-button>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <a (click)="goBack()" style="cursor: pointer">
+              <i class="fa fa-angle-left m-2"></i>Back
+            </a>
+
+            <div class="d-flex gap-2">
+              <app-button
+                btnClass="btn btn-inverse-success btn-fw"
+                text="Update Password"
+                (btnClick)="navigateTo('updatePassword')"
+              ></app-button>
+
+              <app-button
+                btnClass="btn btn-inverse-success btn-fw"
+                text="{{ isLoading ? 'Updating...' : 'Update Info' }}"
+                (btnClick)="updateProfile()"
+              ></app-button>
+            </div>
           </div>
         </form>
       </div>

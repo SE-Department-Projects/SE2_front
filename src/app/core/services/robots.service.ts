@@ -13,4 +13,8 @@ export class RobotsService {
   getAllRobots(): Observable<any> {
     return this._HttpClient.get(`${this.apiUrl}robots/`);
   }
+
+  deleteRobot(id: number): Observable<any> {
+    return this._HttpClient.delete(`${this.apiUrl}robots/deleteRobot/${id}`);
+  }
 }

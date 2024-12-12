@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-layout',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-layout.component.css'],
 })
 export class AdminLayoutComponent {
+  constructor(private _router: Router) {}
   // Define columns
   tableColumns = [
     { field: 'id', header: 'ID' },
@@ -41,5 +43,10 @@ export class AdminLayoutComponent {
 
   deleteRow(row: any) {
     console.log('Deleting row:', row);
+  }
+
+  logout(): void {
+    localStorage.removeItem('loggedInUser');
+    this._router.navigate(['/login']);
   }
 }

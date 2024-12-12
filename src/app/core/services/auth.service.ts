@@ -24,8 +24,41 @@ export class AuthService {
 
     this.userLoginData.token = token;
     this.userLoginData.tokenDetails = decodeToken;
+    console.log(role);
     this.userLoginData.role = role;
 
     localStorage.setItem('loggedInUser', JSON.stringify(this.userLoginData));
+    console.log(localStorage.getItem('loggedInUser'));
+  }
+
+  updatePassword(data: any): Observable<any> {
+    return this._HttpClient.patch(`${this.apiUrl}users/updatePassword`, data);
+  }
+
+  isLoggedIn(): boolean {
+    let token = localStorage.getItem('loggedInUser');
+    let parsedToken = token ? JSON.parse(token) : null;
+    if (parsedToken.token) {
+      return !this.isTokenExpired(parsedToken.token);
+    }
+    return false;
+  }
+
+  private isTokenExpired(token: string): boolean {
+    try {
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      const currentTime = Date.now() / 1000;
+      return decodedToken.exp < currentTime;
+    } catch (error) {
+      return true;
+    }
+  }
+
+  hasRole(roles: string[]): boolean {
+    const loggedInUser = JSON.parse(
+      localStorage.getItem('loggedInUser') || '{}'
+    );
+    const userRole = loggedInUser?.role;
+    return roles.includes(userRole || '');
   }
 }
