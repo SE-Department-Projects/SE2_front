@@ -34,6 +34,7 @@ import { CheckEmailComponent } from './shared/components/check-email/check-email
 import { HttpInterceptorInterceptor } from './core/interceptors/http-interceptor.interceptor';
 import { RobotConfigComponent } from './pages/Admin/robot-config/robot-config.component';
 import { AddRobotComponent } from './pages/Admin/add-robot/add-robot.component';
+import { UserDetailsComponent } from './shared/components/user-details/user-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +63,7 @@ import { AddRobotComponent } from './pages/Admin/add-robot/add-robot.component';
     CheckEmailComponent,
     RobotConfigComponent,
     AddRobotComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

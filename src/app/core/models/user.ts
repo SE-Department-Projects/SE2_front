@@ -4,3 +4,9 @@ export interface User {
   email: string;
   createdAt: string;
 }
+
+export interface AddUser {
+  username: string;
+  email: string;
+  role: string;
+}

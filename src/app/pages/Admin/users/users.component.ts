@@ -20,7 +20,7 @@ export class UsersComponent {
   users: any[] = [];
   totalCount: Number = 0;
   role: string | null = '';
-
+  searchText: string = '';
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.role = params.get('role');
@@ -55,7 +55,7 @@ export class UsersComponent {
     const row = event.row;
     switch (action.icon) {
       case 'eye':
-        this.router.navigate(['/userProfile', row.id]);
+        this.router.navigate(['/userProfile']);
         break;
       case 'edit':
         // this.router.navigate(['/admin/editUser', row.id]);
@@ -70,19 +70,20 @@ export class UsersComponent {
   }
 
   getAllUsers(role: string): any {
-    this._UsersService.GetAllByRole(role).subscribe({
+    this._UsersService.GetAllByRole(role, this.searchText).subscribe({
       next: (response) => {
         if (response.status === 'success') {
+          console.log(response);
           this.users = response.data.users.map((user: User, index: number) => ({
             ...user,
             number: index + 1,
           }));
-
           this.totalCount = response.results;
         }
       },
       error: (err) => {
-        console.log(err);
+        this.users = [];
+        this.totalCount = 0;
       },
     });
   }

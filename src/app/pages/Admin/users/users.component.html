@@ -7,12 +7,13 @@
       <div class="form">
         <input
           type="search"
+          [(ngModel)]="searchText"
           style="border: none"
           class="form-control form-input"
           placeholder="Search anything..."
+          (keyup)="getAllUsers(role!)"
         />
       </div>
-      <!-- Align button to the end -->
 
       <app-button
         btnClass="btn rounded-pill "

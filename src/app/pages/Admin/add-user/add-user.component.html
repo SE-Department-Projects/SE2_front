@@ -45,29 +45,29 @@
           </div>
 
           <div class="form-group row py-2">
-            <label for="Username" class="col-sm-3 col-form-label"
+            <label for="username" class="col-sm-3 col-form-label"
               >User Name</label
             >
             <div class="col-sm-9">
               <input
                 #inputUsername
-                formControlName="Username"
+                formControlName="username"
                 type="text"
                 class="form-control"
-                id="Username"
-                placeholder="Username"
+                id="username"
+                placeholder="username"
                 required
               />
 
               <div
                 *ngIf="
-                  addUserForm.get('Username')?.touched &&
-                  addUserForm.get('Username')?.errors
+                  addUserForm.get('username')?.touched &&
+                  addUserForm.get('username')?.errors
                 "
                 class="text-danger p-2"
               >
                 <p
-                  *ngIf="addUserForm.get('Username')?.errors?.['required']"
+                  *ngIf="addUserForm.get('username')?.errors?.['required']"
                   class="m-0"
                 >
                   Username is required

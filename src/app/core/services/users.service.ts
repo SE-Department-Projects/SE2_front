@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AddUser } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,9 @@ export class UsersService {
   private apiUrl = environment.apiUrl;
   constructor(private _HttpClient: HttpClient) {}
 
-  adduser() {}
+  adduser(user: AddUser): Observable<any> {
+    return this._HttpClient.post(`${this.apiUrl}users`, user);
+  }
 
   GetlatestByRole(role: string): Observable<any> {
     // const headers = new HttpHeaders().set(
@@ -20,8 +23,8 @@ export class UsersService {
     return this._HttpClient.get(`${this.apiUrl}users/${role}`);
   }
 
-  GetAllByRole(role: string): Observable<any> {
-    return this._HttpClient.get(`${this.apiUrl}users/${role}`);
+  GetAllByRole(role: string, name: string): Observable<any> {
+    return this._HttpClient.get(`${this.apiUrl}users/${role}?name=${name}`);
   }
 
   deleteUserById(id: string) {
@@ -30,6 +33,10 @@ export class UsersService {
 
   getCurrentUser(): Observable<any> {
     return this._HttpClient.get(`${this.apiUrl}users/myInfo`);
+  }
+
+  getUser(id: string): Observable<any> {
+    return this._HttpClient.get(`${this.apiUrl}users/${id}`);
   }
 
   updateProfile(data: any): Observable<any> {
