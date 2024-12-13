@@ -37,6 +37,7 @@ import { AddRobotComponent } from './pages/Admin/add-robot/add-robot.component';
 import { UserDetailsComponent } from './shared/components/user-details/user-details.component';
 import { UpdatePasswordComponent } from './shared/components/update-password/update-password.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
+import { LoadingComponent } from './shared/components/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,7 @@ import { UnauthorizedComponent } from './shared/components/unauthorized/unauthor
     UserDetailsComponent,
     UpdatePasswordComponent,
     UnauthorizedComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

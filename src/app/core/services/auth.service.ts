@@ -24,11 +24,9 @@ export class AuthService {
 
     this.userLoginData.token = token;
     this.userLoginData.tokenDetails = decodeToken;
-    console.log(role);
     this.userLoginData.role = role;
 
     localStorage.setItem('loggedInUser', JSON.stringify(this.userLoginData));
-    console.log(localStorage.getItem('loggedInUser'));
   }
 
   updatePassword(data: any): Observable<any> {
