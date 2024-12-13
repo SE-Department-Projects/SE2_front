@@ -74,8 +74,8 @@ export class LoginComponent {
       this._Router.navigate(['/admin']);
     } else if (role === 'technician') {
       this._Router.navigate(['/technician']);
-    } else if (role === 'observer') {
-      this._Router.navigate(['/observer']);
+    } else if (role === 'vendor') {
+      this._Router.navigate(['/vendor']);
     }
   }
 

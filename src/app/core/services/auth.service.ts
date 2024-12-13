@@ -29,6 +29,11 @@ export class AuthService {
     localStorage.setItem('loggedInUser', JSON.stringify(this.userLoginData));
   }
 
+  updatePassToken(token: string): void {
+    let role = JSON.parse(localStorage.getItem('loggedInUser')!).role;
+    this.decodeUserData(token, role);
+  }
+
   updatePassword(data: any): Observable<any> {
     return this._HttpClient.patch(`${this.apiUrl}users/updatePassword`, data);
   }

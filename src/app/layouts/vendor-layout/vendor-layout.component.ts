@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { WebSocketService } from 'src/app/core/services/web-socket.service';
 
 @Component({
-  selector: 'app-observer-layout',
-  templateUrl: './observer-layout.component.html',
-  styleUrls: ['./observer-layout.component.css'],
+  selector: 'app-vendor-layout',
+  templateUrl: './vendor-layout.component.html',
+  styleUrls: ['./vendor-layout.component.css'],
 })
-export class ObserverLayoutComponent {
+export class VendorLayoutComponent {
   constructor(
     private _router: Router,
     private webSocketService: WebSocketService
@@ -17,7 +17,7 @@ export class ObserverLayoutComponent {
   ngOnInit() {
     // Subscribe to incoming WebSocket messages
     this.webSocketService.messages.subscribe((message) => {
-      this.message = message;
+      this.message = JSON.stringify(message);
       console.log('Received message:', message);
     });
   }

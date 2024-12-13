@@ -51,7 +51,7 @@ export class UpdatePasswordComponent {
 
     this._AuthService.updatePassword(this.updatePassForm.value).subscribe({
       next: (res) => {
-        this._AuthService.decodeUserData(res.token, res.role);
+        this._AuthService.updatePassToken(res.token);
         this.showToastrSuccessful();
       },
       error: (err) => {
@@ -72,7 +72,7 @@ export class UpdatePasswordComponent {
 
   showToastrError(): void {
     this._toastr.error('', `${this.messageError}`, {
-      timeOut: 5000,
+      timeOut: 10000,
       positionClass: 'toast-top-right',
       progressBar: true,
       closeButton: true,

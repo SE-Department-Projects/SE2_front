@@ -28,14 +28,10 @@ export class UsersManagementComponent {
   ];
 
   adminsTableData: User[] = [];
-  technicianTableData: User[] = [];
   vendorsTableData: User[] = [];
-  observersTableData: User[] = [];
 
   totalAdminsCount: number = 0;
-  totalTechnicianCount: number = 0;
   totalVendorsCount: number = 0;
-  totalObserverCount: number = 0;
 
   // Define actions
   tableActions = [];

@@ -17,14 +17,9 @@ import { CardInfoComponent } from './shared/components/card-info/card-info.compo
 import { UsersManagementComponent } from './pages/Admin/users-management/users-management.component';
 import { UsersComponent } from './pages/Admin/users/users.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { ObserverLayoutComponent } from './layouts/observer-layout/observer-layout.component';
-import { ObserverDashboardComponent } from './pages/observer/observer-dashboard/observer-dashboard.component';
-import { DetectionHistoryComponent } from './pages/observer/detection-history/detection-history.component';
+import { DetectionHistoryComponent } from './pages/vendor/detection-history/detection-history.component';
 import { AddUserComponent } from './pages/Admin/add-user/add-user.component';
-import { TechnicianLayoutComponent } from './layouts/technician-layout/technician-layout.component';
-import { TechnicianDashboardComponent } from './pages/technician/technician-dashboard/technician-dashboard.component';
 import { MapComponent } from './shared/components/map/map.component';
-import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,6 +38,9 @@ import { PieChartComponent } from './shared/charts/pie-chart/pie-chart.component
 import { LineChartComponent } from './shared/charts/line-chart/line-chart.component';
 import { HorizontalBarChartComponent } from './shared/charts/horizontal-bar-chart/horizontal-bar-chart.component';
 import { ColumnChartComponent } from './shared/charts/column-chart/column-chart.component';
+import { VendorLayoutComponent } from './layouts/vendor-layout/vendor-layout.component';
+import { VendorDashboardComponent } from './pages/vendor/vendor-dashboard/vendor-dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,13 +57,8 @@ import { ColumnChartComponent } from './shared/charts/column-chart/column-chart.
     UsersManagementComponent,
     UsersComponent,
     NotfoundComponent,
-    ObserverLayoutComponent,
-    ObserverDashboardComponent,
     DetectionHistoryComponent,
     AddUserComponent,
-    TechnicianLayoutComponent,
-    TechnicianDashboardComponent,
-    MaintainanceLogComponent,
     MapComponent,
     UserProfileComponent,
     CheckEmailComponent,
@@ -79,6 +72,8 @@ import { ColumnChartComponent } from './shared/charts/column-chart/column-chart.
     LineChartComponent,
     HorizontalBarChartComponent,
     ColumnChartComponent,
+    VendorLayoutComponent,
+    VendorDashboardComponent,
   ],
   imports: [
     BrowserModule,

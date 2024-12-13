@@ -9,13 +9,8 @@ import { UsersManagementComponent } from './pages/Admin/users-management/users-m
 import { AdminDashboardComponent } from './pages/Admin/admin-dashboard/admin-dashboard.component';
 import { UsersComponent } from './pages/Admin/users/users.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { ObserverLayoutComponent } from './layouts/observer-layout/observer-layout.component';
-import { ObserverDashboardComponent } from './pages/observer/observer-dashboard/observer-dashboard.component';
-import { DetectionHistoryComponent } from './pages/observer/detection-history/detection-history.component';
+import { DetectionHistoryComponent } from './pages/vendor/detection-history/detection-history.component';
 import { AddUserComponent } from './pages/Admin/add-user/add-user.component';
-import { TechnicianLayoutComponent } from './layouts/technician-layout/technician-layout.component';
-import { TechnicianDashboardComponent } from './pages/technician/technician-dashboard/technician-dashboard.component';
-import { MaintainanceLogComponent } from './pages/technician/maintainance-log/maintainance-log.component';
 import { UserProfileComponent } from './shared/components/user-profile/user-profile.component';
 import { CheckEmailComponent } from './shared/components/check-email/check-email.component';
 import { RobotConfigComponent } from './pages/Admin/robot-config/robot-config.component';
@@ -24,6 +19,8 @@ import { UpdatePasswordComponent } from './shared/components/update-password/upd
 import { roleGuard } from './core/guards/role.guard';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 import { authGuard } from './core/guards/auth.guard';
+import { VendorLayoutComponent } from './layouts/vendor-layout/vendor-layout.component';
+import { VendorDashboardComponent } from './pages/vendor/vendor-dashboard/vendor-dashboard.component';
 
 const routes: Routes = [
   {
@@ -81,54 +78,28 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'observer',
-    component: ObserverLayoutComponent,
-    title: 'Observer',
+    path: 'vendor',
+    component: VendorLayoutComponent,
+    title: 'Vendor',
     canActivate: [authGuard, roleGuard],
     data: {
-      roles: ['observer'],
+      roles: ['vendor'],
     },
     children: [
       {
         path: '',
-        redirectTo: 'observerDashboard',
+        redirectTo: 'vendorDashboard',
         pathMatch: 'full',
       },
       {
-        path: 'observerDashboard',
-        component: ObserverDashboardComponent,
+        path: 'vendorDashboard',
+        component: VendorDashboardComponent,
         title: 'Dashboard',
       },
       {
         path: 'detectionHistory',
         component: DetectionHistoryComponent,
         title: 'Detection History',
-      },
-    ],
-  },
-  {
-    path: 'technician',
-    component: TechnicianLayoutComponent,
-    title: 'Technician',
-    canActivate: [authGuard, roleGuard],
-    data: {
-      roles: ['technician'],
-    },
-    children: [
-      {
-        path: '',
-        redirectTo: 'technicianDashboard',
-        pathMatch: 'full',
-      },
-      {
-        path: 'technicianDashboard',
-        component: TechnicianDashboardComponent,
-        title: 'Dashboard',
-      },
-      {
-        path: 'maintainanceLog',
-        component: MaintainanceLogComponent,
-        title: 'Maintainance Log',
       },
     ],
   },
