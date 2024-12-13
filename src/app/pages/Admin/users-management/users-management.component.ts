@@ -17,9 +17,6 @@ export class UsersManagementComponent {
 
   ngOnInit(): void {
     this.getLatestAdmins();
-    this.getLatestTechnicians();
-    this.getLatestVendors();
-    this.getLatestObservers();
   }
 
   // Define columns
@@ -44,74 +41,28 @@ export class UsersManagementComponent {
   tableActions = [];
 
   getLatestAdmins(): any {
-    this._UsersService.GetlatestByRole('admin').subscribe({
+    this._UsersService.GetlatestByRole().subscribe({
       next: (response) => {
         if (response.status === 'success') {
-          this.adminsTableData = response.data.users.map(
-            (user: User, index: number ) => ({
-              ...user,
-              number: index + 1,
-            })
-          );
-          this.totalAdminsCount = response.results;
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  getLatestTechnicians(): any {
-    this._UsersService.GetlatestByRole('technician').subscribe({
-      next: (response) => {
-        if (response.status === 'success') {
-          this.technicianTableData = response.data.users.map(
+          this.adminsTableData = response.data.admin.map(
             (user: User, index: number) => ({
               ...user,
               number: index + 1,
+              CreatedAt: user.CreatedAt.slice(0, 10),
             })
           );
-          this.totalTechnicianCount = response.results;
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
+          this.totalAdminsCount = 5;
 
-  getLatestVendors(): any {
-    this._UsersService.GetlatestByRole('vendor').subscribe({
-      next: (response) => {
-        if (response.status === 'success') {
-          this.vendorsTableData = response.data.users.map(
+          this.vendorsTableData = response.data.vendor.map(
             (user: User, index: number) => ({
               ...user,
               number: index + 1,
+              CreatedAt: user.CreatedAt.slice(0, 10),
             })
           );
-          this.totalVendorsCount = response.results;
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
 
-  getLatestObservers(): any {
-    this._UsersService.GetlatestByRole('observer').subscribe({
-      next: (response) => {
-        if (response.status === 'success') {
-          this.observersTableData = response.data.users.map(
-            (user: User, index: number) => ({
-              ...user,
-              number: index + 1,
-            })
-          );
-          this.totalObserverCount = response.results;
-          console.log(this.totalObserverCount);
+          console.log(this.totalVendorsCount);
+          this.totalVendorsCount = 5;
         }
       },
       error: (err) => {

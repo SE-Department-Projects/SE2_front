@@ -1,17 +1,12 @@
 <div class="container py-5">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-md-3">
       <a [routerLink]="['/admin/users', 'admin']">
-        <app-card-info title="Admins" [count]="totalAdminsCount"></app-card-info
-      ></a>
-    </div>
-    <div class="col-md-3">
-      <a [routerLink]="['/admin/users', 'technician']">
         <app-card-info
-          title="Technicians"
-          [count]="totalTechnicianCount"
-        ></app-card-info
-      ></a>
+          title="Admins"
+          [count]="totalAdminsCount"
+        ></app-card-info>
+      </a>
     </div>
 
     <div class="col-md-3">
@@ -19,17 +14,8 @@
         <app-card-info
           title="Vendors"
           [count]="totalVendorsCount"
-        ></app-card-info
-      ></a>
-    </div>
-
-    <div class="col-md-3">
-      <a [routerLink]="['/admin/users', 'observer']">
-        <app-card-info
-          title="Observers"
-          [count]="totalObserverCount"
-        ></app-card-info
-      ></a>
+        ></app-card-info>
+      </a>
     </div>
   </div>
 
@@ -45,31 +31,15 @@
         <app-table
           *ngIf="adminsTableData.length > 0; else NoUsers"
           [columns]="tableColumns"
-          [data]="adminsTableData | slice : 0 : 5"
+          [data]="adminsTableData"
           [actions]="tableActions"
           (actionClick)="($event)"
         >
         </app-table>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="table-card">
-        <div
-          class="table-title d-flex justify-content-between align-items-center px-2"
-        >
-          <h3>Latest Technician</h3>
-          <a [routerLink]="['/admin/users', 'technician']">View All</a>
-        </div>
-        <app-table
-          [columns]="tableColumns"
-          [data]="technicianTableData | slice : 0 : 5"
-          [actions]="tableActions"
-          (actionClick)="($event)"
-        ></app-table>
-      </div>
-    </div>
 
-    <div class="col-md-6 pt-3">
+    <div class="col-md-6">
       <div class="table-card">
         <div
           class="table-title d-flex justify-content-between align-items-center px-2"
@@ -79,24 +49,7 @@
         </div>
         <app-table
           [columns]="tableColumns"
-          [data]="vendorsTableData | slice : 0 : 5"
-          [actions]="tableActions"
-          (actionClick)="($event)"
-        ></app-table>
-      </div>
-    </div>
-
-    <div class="col-md-6 pt-3">
-      <div class="table-card">
-        <div
-          class="table-title d-flex justify-content-between align-items-center px-2"
-        >
-          <h3>Latest Observers</h3>
-          <a [routerLink]="['/admin/users', 'observer']">View All</a>
-        </div>
-        <app-table
-          [columns]="tableColumns"
-          [data]="observersTableData | slice : 0 : 5"
+          [data]="vendorsTableData"
           [actions]="tableActions"
           (actionClick)="($event)"
         ></app-table>

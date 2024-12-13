@@ -15,12 +15,12 @@ export class UsersService {
     return this._HttpClient.post(`${this.apiUrl}users`, user);
   }
 
-  GetlatestByRole(role: string): Observable<any> {
+  GetlatestByRole(): Observable<any> {
     // const headers = new HttpHeaders().set(
     //   'Authorization',
     //   `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTM5ZWY4ZTYwN2I5ZjU5MzQ0MjYzMCIsImlhdCI6MTczMzY4MzY5MiwiZXhwIjoxNzQxNDU5NjkyfQ.GzZ_gmUUoyW8E5TZ5j2W2OCHoKLlGWx9hQJOaNrsbLw`
     // );
-    return this._HttpClient.get(`${this.apiUrl}users/${role}`);
+    return this._HttpClient.get(`${this.apiUrl}users/latestbyrole`);
   }
 
   GetAllByRole(role: string, name: string): Observable<any> {
