@@ -64,4 +64,12 @@ export class AuthService {
     const userRole = loggedInUser?.role;
     return roles.includes(userRole || '');
   }
+
+  toggleLockUser(data: any): Observable<any> {
+    return this._HttpClient.patch(`${this.apiUrl}users/updateIsLocked`, data);
+  }
+
+  fogetPassword(email: string): Observable<any> {
+    return this._HttpClient.patch(`${this.apiUrl}users/forgotPassword`, email);
+  }
 }

@@ -36,6 +36,7 @@ export class UsersComponent {
     { field: '_id', header: 'ID' },
     { field: 'username', header: 'Name' },
     { field: 'email', header: 'Email' },
+    { field: 'isLocked', header: 'Is Locked' },
     { field: 'CreatedAt', header: 'Created At' },
   ];
 
@@ -77,6 +78,7 @@ export class UsersComponent {
           this.users = response.data.users.map((user: User, index: number) => ({
             ...user,
             number: index + 1,
+            CreatedAt: user.CreatedAt.slice(0, 10),
           }));
           this.totalCount = response.results;
         }

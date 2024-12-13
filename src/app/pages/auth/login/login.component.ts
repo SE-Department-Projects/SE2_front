@@ -35,6 +35,64 @@ export class LoginComponent {
       ],
     ],
   });
+  // handleLogin(): void {
+  //   if (this.loginForm.valid) {
+  //     console.log(this.counter);
+
+  //     // Show warning on second attempt
+  //     if (this.counter === 2) {
+  //       this.showToastrWarning();
+  //     }
+
+  //     // Lock account on third attempt
+  //     if (this.counter === 3) {
+  //       this._AuthService
+  //         .toggleLockUser({
+  //           email: this.loginForm.value.email,
+  //           isLocked: 1,
+  //         })
+  //         .subscribe({
+  //           next: (response) => {
+  //             if (response.status === 'success') {
+  //               this.messageError =
+  //                 'Your account is locked. Please check your email to reset your password.';
+  //               this.redirectToCheckEmail();
+  //             }
+  //           },
+  //           error: (err) => {
+  //             console.error('Error locking user:', err);
+  //           },
+  //         });
+  //       return; // Stop further processing after locking the account
+  //     }
+
+  //     // Attempt login
+  //     this._AuthService.login(this.loginForm.value).subscribe({
+  //       next: (response) => {
+  //         if (response.status === 'success') {
+  //           // Check if account is locked
+  //           if (response.isLocked == 1) {
+  //             this.messageError =
+  //               'Your account is locked. Please check your email to reset your password.';
+  //           } else {
+  //             // Decode user data and redirect based on role
+  //             this._AuthService.decodeUserData(response.token, response.role);
+  //             this.redirectBasedOnRole(response.role);
+  //             this.counter = 1; // Reset counter on successful login
+  //           }
+  //         }
+  //       },
+  //       error: (err) => {
+  //         if (err.error.status === 'fail') {
+  //           this.messageError = err.error.message;
+  //         }
+  //         this.counter++; // Increment counter on failed login
+  //       },
+  //     });
+  //   } else {
+  //     this.loginForm.markAllAsTouched();
+  //   }
+  // }
 
   handleLogin(): void {
     if (this.loginForm.valid) {
@@ -45,14 +103,43 @@ export class LoginComponent {
       }
 
       if (this.counter === 3) {
-        this.redirectToCheckEmail();
+        console.log('counter is 3');
+        this._AuthService
+          .toggleLockUser({
+            email: this.loginForm.value.email,
+            isLocked: 1,
+          })
+          .subscribe({
+            next: (response) => {
+              console.log(response);
+              if (response.status === 'success') {
+                this._AuthService
+                  .fogetPassword(this.loginForm.value.email)
+                  .subscribe({
+                    next: (response) => {
+                      if (response.status === 'success') {
+                        this.redirectToCheckEmail();
+                      }
+                    },
+                  });
+              }
+            },
+
+            error: (err) => {},
+          });
       }
 
       this._AuthService.login(this.loginForm.value).subscribe({
         next: (response) => {
+          console.log(response);
           if (response.status === 'success') {
             this._AuthService.decodeUserData(response.token, response.role);
-            this.redirectBasedOnRole(response.role);
+            console.log(response);
+            if (response.isLocked == 1) {
+              console.log('you are lockeddd!!!');
+              this.messageError =
+                'You Are Locked, Go To Email And Reset The Password!!';
+            } else this.redirectBasedOnRole(response.role);
           }
         },
         error: (err) => {

@@ -24,7 +24,9 @@ export class UsersService {
   }
 
   GetAllByRole(role: string, name: string): Observable<any> {
-    return this._HttpClient.get(`${this.apiUrl}users/${role}?name=${name}`);
+    return this._HttpClient.get(
+      `${this.apiUrl}users//getAll/${role}?name=${name}`
+    );
   }
 
   deleteUserById(id: string) {

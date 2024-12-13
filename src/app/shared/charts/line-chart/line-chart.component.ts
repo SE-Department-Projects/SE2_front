@@ -10,18 +10,22 @@ export class LineChartComponent {
 
   productSalesMulti: any[] = [
     {
-      name: 'laptop',
+      name: 'Human Detection',
       series: [
         {
-          name: 'January',
+          name: '12 PM',
           value: 178,
         },
         {
-          name: 'February',
+          name: '6 PM',
           value: 165,
         },
         {
-          name: 'March',
+          name: '12 pm ',
+          value: 144,
+        },
+        {
+          name: '6 AM ',
           value: 144,
         },
       ],
@@ -30,16 +34,20 @@ export class LineChartComponent {
       name: 'monitor',
       series: [
         {
-          name: 'January',
-          value: 144,
+          name: '12 PM',
+          value: 70,
         },
         {
-          name: 'February',
-          value: 250,
+          name: '6 PM',
+          value: 99,
         },
         {
-          name: 'March',
-          value: 133,
+          name: '12 pm ',
+          value: 84,
+        },
+        {
+          name: '6 AM ',
+          value: 154,
         },
       ],
     },
@@ -54,8 +62,8 @@ export class LineChartComponent {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Products';
-  yAxisLabel: string = 'Sales';
+  xAxisLabel: string = 'Time';
+  yAxisLabel: string = 'Detections';
   timeline: boolean = true;
 
   colorScheme = {

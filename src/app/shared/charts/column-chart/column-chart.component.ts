@@ -9,15 +9,15 @@ export class ColumnChartComponent {
   robotBehaviorData: any[] = [
     {
       _id: '2',
-      count: 3,
+      count: 21,
     },
     {
       _id: '1',
-      count: 3,
+      count: 20,
     },
     {
       _id: '3',
-      count: 2,
+      count: 22,
     },
   ];
 
@@ -27,7 +27,7 @@ export class ColumnChartComponent {
   gradient: boolean = false;
   showLegend: boolean = false;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Robot Behavior';
+  xAxisLabel: string = 'Robot ID';
   showYAxisLabel: boolean = true;
   yAxisLabel: string = 'Count';
   barPadding: number = 105; // Adjust padding between bars
@@ -35,7 +35,7 @@ export class ColumnChartComponent {
   ngOnInit(): void {
     // Transform raw data into chart-compatible format
     this.robotBehaviorData = this.robotBehaviorData.map((item: any) => ({
-      name: `Behavior ${item._id}`, // Name labels for each bar
+      name: `Robot ${item._id}`, // Name labels for each bar
       value: item.count, // Count as the value
     }));
   }

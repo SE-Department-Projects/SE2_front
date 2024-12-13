@@ -37,3 +37,12 @@
 ::ng-deep table tbody tr td:last-child button i:hover {
     color: white;
 }
+::ng-deep table tbody tr td {
+    /* Check if the cell contains the 'isLocked' value */
+    color: inherit; /* Default color */
+  }
+  
+  ::ng-deep table tbody tr td[data-is-locked="1"] {
+    color: red; /* Apply red color for 'isLocked' == 1 */
+  }
+  
