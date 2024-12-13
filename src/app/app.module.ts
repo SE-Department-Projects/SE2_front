@@ -38,6 +38,11 @@ import { UserDetailsComponent } from './shared/components/user-details/user-deta
 import { UpdatePasswordComponent } from './shared/components/update-password/update-password.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { PieChartComponent } from './shared/charts/pie-chart/pie-chart.component';
+import { LineChartComponent } from './shared/charts/line-chart/line-chart.component';
+import { HorizontalBarChartComponent } from './shared/charts/horizontal-bar-chart/horizontal-bar-chart.component';
+import { ColumnChartComponent } from './shared/charts/column-chart/column-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +75,10 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
     UpdatePasswordComponent,
     UnauthorizedComponent,
     LoadingComponent,
+    PieChartComponent,
+    LineChartComponent,
+    HorizontalBarChartComponent,
+    ColumnChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +89,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    NgxChartsModule,
   ],
   providers: [
     {

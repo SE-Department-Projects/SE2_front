@@ -33,6 +33,16 @@ body {
   /* box-sizing: border-box; */
 }
 
+text {
+  color: white;
+  fill: white;
+}
+
+/* label {
+  color: white;
+  fill: white;
+} */
+
 button {
   color: white;
 }
@@ -44,10 +54,10 @@ button {
   pointer-events: none;
 }
 
-.btn-check[disabled] + .btn,
-.ajax-upload-dragdrop .btn-check[disabled] + .ajax-file-upload,
-.btn-check:disabled + .btn,
-.ajax-upload-dragdrop .btn-check:disabled + .ajax-file-upload {
+.btn-check[disabled]+.btn,
+.ajax-upload-dragdrop .btn-check[disabled]+.ajax-file-upload,
+.btn-check:disabled+.btn,
+.ajax-upload-dragdrop .btn-check:disabled+.ajax-file-upload {
   pointer-events: none;
   filter: none;
   opacity: 0.65;
@@ -65,7 +75,7 @@ button {
 
 .btn-gradient-primary:not([disabled]):not(.disabled):active,
 .btn-gradient-primary:not([disabled]):not(.disabled).active,
-.show > .btn-gradient-primary.dropdown-toggle {
+.show>.btn-gradient-primary.dropdown-toggle {
   background: linear-gradient(to right, #da8cff, #9a55ff);
 }
 
@@ -95,7 +105,7 @@ button {
 
 .btn-gradient-secondary:not([disabled]):not(.disabled):active,
 .btn-gradient-secondary:not([disabled]):not(.disabled).active,
-.show > .btn-gradient-secondary.dropdown-toggle {
+.show>.btn-gradient-secondary.dropdown-toggle {
   background: linear-gradient(to right, #e7ebf0, #868e96);
 }
 
@@ -125,7 +135,7 @@ button {
 
 .btn-gradient-success:not([disabled]):not(.disabled):active,
 .btn-gradient-success:not([disabled]):not(.disabled).active,
-.show > .btn-gradient-success.dropdown-toggle {
+.show>.btn-gradient-success.dropdown-toggle {
   background: linear-gradient(to right, #84d9d2, #07cdae);
 }
 
@@ -155,7 +165,7 @@ button {
 
 .btn-gradient-info:not([disabled]):not(.disabled):active,
 .btn-gradient-info:not([disabled]):not(.disabled).active,
-.show > .btn-gradient-info.dropdown-toggle {
+.show>.btn-gradient-info.dropdown-toggle {
   background: linear-gradient(to right, #90caf9, #047edf 99%);
 }
 
@@ -209,7 +219,7 @@ button {
 
 .btn-gradient-danger:not([disabled]):not(.disabled):active,
 .btn-gradient-danger:not([disabled]):not(.disabled).active,
-.show > .btn-gradient-danger.dropdown-toggle {
+.show>.btn-gradient-danger.dropdown-toggle {
   background: linear-gradient(to right, #ffbf96, #fe7096);
 }
 
@@ -239,7 +249,7 @@ button {
 
 .btn-gradient-light:not([disabled]):not(.disabled):active,
 .btn-gradient-light:not([disabled]):not(.disabled).active,
-.show > .btn-gradient-light.dropdown-toggle {
+.show>.btn-gradient-light.dropdown-toggle {
   background: linear-gradient(to bottom, #f4f4f4, #e4e4e9);
 }
 
@@ -269,7 +279,7 @@ button {
 
 .btn-gradient-dark:not([disabled]):not(.disabled):active,
 .btn-gradient-dark:not([disabled]):not(.disabled).active,
-.show > .btn-gradient-dark.dropdown-toggle {
+.show>.btn-gradient-dark.dropdown-toggle {
   background: linear-gradient(89deg, #5e7188, #3e4b5b);
 }
 
@@ -333,13 +343,14 @@ button {
 
 .btn-inverse-success.active,
 .btn-inverse-success:active,
-.show > .btn-inverse-success.dropdown-toggle {
+.show>.btn-inverse-success.dropdown-toggle {
   color: #ffffff;
   background-color: #1bcfb4;
   border-color: #1bcfb4;
 }
 
 .toast-success {
-  background-color: var(--secondary-color) !important; /* Green */
+  background-color: var(--secondary-color) !important;
+  /* Green */
   color: var(--tertiary-color) !important;
 }

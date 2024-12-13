@@ -1,0 +1,11 @@
+ngx-charts-bar-horizontal text {
+    font-size: 14px;
+    fill: #fff;
+    /* Adjust the text color */
+}
+
+ngx-charts-bar-horizontal .bar {
+    stroke-width: 2px;
+    stroke: #000;
+    /* Add a border to the bars */
+}
