@@ -21,4 +21,8 @@ export class RobotsService {
   getDetections(): Observable<any> {
     return this._HttpClient.get(`${this.apiUrl}robots/detections`);
   }
+
+  createRobot(id: number): Observable<any> {
+    return this._HttpClient.post(`${this.apiUrl}robots/`, id);
+  }
 }
