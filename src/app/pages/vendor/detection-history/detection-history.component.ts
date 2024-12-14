@@ -17,6 +17,8 @@ export class DetectionHistoryComponent implements OnInit {
 
   tableData: any[] = [];
   totalDetections: number = 0;
+  detectionsLastHour: number = 0;
+  detectionsToday: number = 0;
 
   constructor(
     private _RobotsService: RobotsService,
@@ -32,7 +34,7 @@ export class DetectionHistoryComponent implements OnInit {
     this._RobotsService.getDetections().subscribe({
       next: (res) => {
         this.tableData = res.data.detections;
-        this.totalDetections = this.tableData.length;
+        this.updateDetectionCounts();
       },
       error: (err) => {
         console.log(err.error.message);
@@ -47,16 +49,36 @@ export class DetectionHistoryComponent implements OnInit {
       if (collection === 'detections') {
         if (type === 'insert') {
           this.tableData.push(fullDocument);
-          this.totalDetections++;
+          this.updateDetectionCounts();
         } else if (type === 'delete') {
           console.log(message.key);
           const idToDelete = message.key;
           this.tableData = this.tableData.filter(
             (data) => data.id !== idToDelete
           );
-          this.totalDetections--;
+          this.updateDetectionCounts();
         }
       }
     });
+  }
+
+  updateDetectionCounts(): void {
+    const now = new Date();
+    const startOfDay = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    ).getTime();
+    const oneHourAgo = now.getTime() - 60 * 60 * 1000;
+
+    this.totalDetections = this.tableData.length;
+    this.detectionsLastHour = this.tableData.filter((detection) => {
+      const detectionTime = new Date(detection.detectionTime).getTime();
+      return detectionTime >= oneHourAgo;
+    }).length;
+    this.detectionsToday = this.tableData.filter((detection) => {
+      const detectionTime = new Date(detection.detectionTime).getTime();
+      return detectionTime >= startOfDay;
+    }).length;
   }
 }
