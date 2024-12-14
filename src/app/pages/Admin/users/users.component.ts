@@ -52,7 +52,7 @@ export class UsersComponent {
     const row = event.row;
     switch (action.icon) {
       case 'edit':
-        this.router.navigate(['/userProfile']);
+        this.router.navigate([`/admin/userDetails/${row._id}`]);
         break;
       case 'trash':
         this.deleteUser(row.id, row.username);

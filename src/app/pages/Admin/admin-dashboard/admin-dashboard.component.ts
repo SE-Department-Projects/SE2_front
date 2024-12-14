@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartsService } from 'src/app/core/services/charts.service';
+import { WebSocketService } from 'src/app/core/services/web-socket.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,12 +10,23 @@ import { ChartsService } from 'src/app/core/services/charts.service';
 export class AdminDashboardComponent implements OnInit {
   detectionDetails: any[] = [];
   topFreqLocation: any[] = [];
+  robotRanks: any[] = [];
+  message?: string;
 
-  constructor(private _ChartsService: ChartsService) {}
+  constructor(
+    private _ChartsService: ChartsService,
+    private webSocketService: WebSocketService
+  ) {}
 
   ngOnInit(): void {
     this.eventTypeAnalysis();
     this.getFreqLocations();
+    this.robotBehaviorRanks();
+    this.webSocketService.messages.subscribe((message) => {
+      // this.message = JSON.stringify(message);
+      console.log('reallllllll timeeeeeeeeeeeeeee');
+      this.getRealTime();
+    });
   }
 
   eventTypeAnalysis() {
@@ -45,9 +57,27 @@ export class AdminDashboardComponent implements OnInit {
               value: location.count,
             })
           );
-          console.log(this.topFreqLocation);
         }
       },
     });
+  }
+
+  robotBehaviorRanks() {
+    this._ChartsService.getRobotBehaviorRanks().subscribe({
+      next: (response) => {
+        if (response.status === 'success') {
+          this.robotRanks = response.data.robotBehavior.map((item: any) => ({
+            name: `Robot ${item._id}`,
+            value: item.count,
+          }));
+        }
+      },
+    });
+  }
+
+  getRealTime() {
+    this.eventTypeAnalysis();
+    this.getFreqLocations();
+    this.robotBehaviorRanks();
   }
 }

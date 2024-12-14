@@ -49,6 +49,7 @@ export class HorizontalBarChartComponent {
     { name: 'Location 1', value: '#5AA454' },
     { name: 'Location 2', value: '#E44D25' },
   ];
+  chartTitle: string = 'Frequent Location';
 
   ngOnInit(): void {}
 }

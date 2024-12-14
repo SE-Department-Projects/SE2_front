@@ -32,6 +32,7 @@ export class UsersManagementComponent {
 
   totalAdminsCount: number = 0;
   totalVendorsCount: number = 0;
+  totalTotalCount: number = 0;
 
   // Define actions
   tableActions = [];

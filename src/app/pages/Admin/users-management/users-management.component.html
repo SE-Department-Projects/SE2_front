@@ -1,6 +1,15 @@
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-3">
+      <a>
+        <app-card-info
+          title="Total Users"
+          [count]="totalAdminsCount"
+        ></app-card-info>
+      </a>
+    </div>
+
+    <div class="col-md-3">
       <a [routerLink]="['/admin/users', 'admin']">
         <app-card-info
           title="Admins"

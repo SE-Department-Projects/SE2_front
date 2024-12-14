@@ -1,0 +1,54 @@
+.card {
+    background-color: var(--tertiary-color);
+    color: white;
+}
+
+.card-title {
+    border-left: solid 4px var(--secondary-color);
+    padding-left: 10px;
+}
+
+input {
+    background-color: var(--tertiary-color);
+}
+
+input:focus {
+    background-color: var(--tertiary-color);
+    outline: none;
+}
+
+input:not(:placeholder-shown) {
+    color: var(--secondary-color);
+}
+
+input::placeholder {
+    color: var(--secondary-color);
+}
+
+select {
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+}
+
+select:focus {
+    color: var(--secondary-color);
+    background-color: var(--tertiary-color);
+    outline: none;
+}
+
+select option {
+    color: var(--secondary-color);
+    background-color: var(--tertiary-color);
+}
+
+select option[disabled] {
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+
+input:-webkit-autofill {
+    color: var(--secondary-color) !important;
+    background-color: var(--tertiary-color) !important;
+    -webkit-text-fill-color: var(--secondary-color) !important;
+}

@@ -21,6 +21,7 @@ import { UnauthorizedComponent } from './shared/components/unauthorized/unauthor
 import { authGuard } from './core/guards/auth.guard';
 import { VendorLayoutComponent } from './layouts/vendor-layout/vendor-layout.component';
 import { VendorDashboardComponent } from './pages/vendor/vendor-dashboard/vendor-dashboard.component';
+import { UserDetailsComponent } from './shared/components/user-details/user-details.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,11 @@ const routes: Routes = [
       {
         path: 'addRobot',
         component: AddRobotComponent,
+      },
+      {
+        path: 'userDetails/:id',
+        component: UserDetailsComponent,
+        title: 'user details',
       },
     ],
   },

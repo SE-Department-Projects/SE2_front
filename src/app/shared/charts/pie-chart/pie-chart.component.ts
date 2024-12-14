@@ -8,16 +8,19 @@ import { ChartsService } from 'src/app/core/services/charts.service';
 })
 export class PieChartComponent {
   @Input() detectionDetails: any[] = [];
+  @Input() humanDetectionCount: number = 0;
+  @Input() obstacleDetectionCount: number = 0;
+
   constructor(private _ChartsService: ChartsService) {}
   customColors = [
-    // {
-    //   name: 'Human Detection',
-    //   value: '#01fc8d',
-    // },
-    // {
-    //   name: 'Obstacle Detection',
-    //   value: '#F44336',
-    // },
+    {
+      name: 'humanDetection',
+      value: '#01fc8d',
+    },
+    {
+      name: 'obstacleDetection',
+      value: '#F44336',
+    },
   ];
 
   ngOnInit(): void {}
