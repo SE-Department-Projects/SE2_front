@@ -24,7 +24,6 @@ export class RobotConfigComponent {
   tableColumns = [
     { field: 'id', header: 'ID' },
     { field: 'location', header: 'Location' },
-    { field: 'isMalfunctioned', header: 'Malfunctioned' },
   ];
 
   tableActions = [{ icon: 'eye' }, { icon: 'edit' }, { icon: 'trash' }];

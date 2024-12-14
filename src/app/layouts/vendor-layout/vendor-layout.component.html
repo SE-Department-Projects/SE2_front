@@ -26,14 +26,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bb">
   <div class="container-fluid">
     <label class="navbar-toggler toggle-btn" for="sidebar-toggle">
-      <span class="navbar-toggler-icon"></span>
+      <!-- <span class="navbar-toggler-icon"></span> -->
     </label>
-    <a class="navbar-brand" href="#">Purple</a>
+    <a class="navbar-brand text-white" href="#">Human Detection System</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="../userProfile"
-            ><i class="fa fa-user"></i
+            ><i class="fa fa-user profile"></i
           ></a>
         </li>
         <li class="nav-item">
@@ -47,7 +47,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="logout()"
-            ><i class="fas fa-power-off"></i
+            ><i class="fas fa-power-off text-danger"></i
           ></a>
         </li>
       </ul>
@@ -62,13 +62,4 @@
     <h1>Real-Time WebSocket Message</h1>
     <p>{{ message }}</p>
   </div>
-
-  <!-- <app-table
-    [columns]="tableColumns"
-    [data]="tableData"
-    [actions]="tableActions"
-    (actionClick)="onTableAction($event)"
-  >
-  </app-table> -->
 </div>
-<p>vendor-layout works!</p>

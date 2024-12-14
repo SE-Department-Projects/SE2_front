@@ -111,6 +111,10 @@
   }
 }
 
+.profile {
+  color: var(--secondary-color) !important;
+}
+
 /* ====================  */
 
 .active-link {
