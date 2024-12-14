@@ -7,10 +7,16 @@
       ></app-card-info>
     </div>
     <div class="col-md-4">
-      <app-card-info title="Detections Last Week" [count]="4"></app-card-info>
+      <app-card-info
+        title="Detections Last Hour"
+        [count]="detectionsLastHour"
+      ></app-card-info>
     </div>
     <div class="col-md-4">
-      <app-card-info title="Detections Last Year" [count]="7"></app-card-info>
+      <app-card-info
+        title="Detections Today"
+        [count]="detectionsToday"
+      ></app-card-info>
     </div>
   </div>
 
