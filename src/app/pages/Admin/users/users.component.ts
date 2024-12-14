@@ -44,23 +44,15 @@ export class UsersComponent {
   tableData = [];
 
   // Define actions
-  tableActions = [
-    { lable: 'eye', icon: 'eye' },
-    { icon: 'edit' },
-    { icon: 'trash' },
-  ];
+  tableActions = [{ icon: 'edit' }, { icon: 'trash' }];
 
   actionClick(event: { action: { label: string; icon: string }; row: any }) {
     console.log(event);
     const action = event.action;
     const row = event.row;
     switch (action.icon) {
-      case 'eye':
-        this.router.navigate(['/userProfile']);
-        break;
       case 'edit':
-        // this.router.navigate(['/admin/editUser', row.id]);
-
+        this.router.navigate(['/userProfile']);
         break;
       case 'trash':
         this.deleteUser(row.id, row.username);

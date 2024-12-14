@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
+import { ChartsService } from 'src/app/core/services/charts.service';
 
 @Component({
   selector: 'app-pie-chart',
@@ -7,41 +7,27 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./pie-chart.component.css'],
 })
 export class PieChartComponent {
-  detectionDetails: any[] = [];
-
-  // Define a color scheme for the chart
+  @Input() detectionDetails: any[] = [];
+  constructor(private _ChartsService: ChartsService) {}
   customColors = [
-    {
-      name: 'Human Detection',
-      value: '#01fc8d',
-    },
-    {
-      name: 'Obstacle Detection',
-      value: '#F44336',
-    },
+    // {
+    //   name: 'Human Detection',
+    //   value: '#01fc8d',
+    // },
+    // {
+    //   name: 'Obstacle Detection',
+    //   value: '#F44336',
+    // },
   ];
 
-  ngOnInit(): void {
-    this.detectionDetails = [
-      {
-        name: 'Human Detection',
-        value: 70,
-      },
-      {
-        name: 'Obstacle Detection',
-        value: 30,
-      },
-    ];
-  }
+  ngOnInit(): void {}
 
-  view: [number, number] = [550, 370];
-  showLegend: boolean = false;
+  view: [number, number] = [600, 370];
+  showLegend: boolean = true;
   showLabels: boolean = true;
   gradient: boolean = false;
   isDoughnut: boolean = true;
   legendPosition: string = 'below';
 
   chartTitle: string = 'Detection Results';
-
-  constructor() {}
 }

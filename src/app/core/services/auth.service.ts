@@ -70,6 +70,8 @@ export class AuthService {
   }
 
   fogetPassword(email: string): Observable<any> {
-    return this._HttpClient.patch(`${this.apiUrl}users/forgotPassword`, email);
+    return this._HttpClient.post(`${this.apiUrl}users/forgotPassword`, {
+      email,
+    });
   }
 }

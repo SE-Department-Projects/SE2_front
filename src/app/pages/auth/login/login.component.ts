@@ -111,8 +111,9 @@ export class LoginComponent {
           })
           .subscribe({
             next: (response) => {
-              console.log(response);
+              this.counter = 1;
               if (response.status === 'success') {
+                console.log(this.loginForm.value.email);
                 this._AuthService
                   .fogetPassword(this.loginForm.value.email)
                   .subscribe({
@@ -120,6 +121,10 @@ export class LoginComponent {
                       if (response.status === 'success') {
                         this.redirectToCheckEmail();
                       }
+                    },
+
+                    error: (err) => {
+                      console.log(err);
                     },
                   });
               }

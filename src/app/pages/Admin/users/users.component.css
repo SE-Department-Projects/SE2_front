@@ -26,23 +26,18 @@
     color: var(--secondary-color);
 }
 
-::ng-deep table tbody tr td:last-child button:nth-child(2) i {
-    color: blue;
-}
 
-::ng-deep table tbody tr td:last-child button:nth-child(3) i {
+
+::ng-deep table tbody tr td:last-child button:nth-child(2) i {
     color: red;
 }
 
 ::ng-deep table tbody tr td:last-child button i:hover {
     color: white;
 }
+
 ::ng-deep table tbody tr td {
     /* Check if the cell contains the 'isLocked' value */
-    color: inherit; /* Default color */
-  }
-  
-  ::ng-deep table tbody tr td[data-is-locked="1"] {
-    color: red; /* Apply red color for 'isLocked' == 1 */
-  }
-  
+    color: inherit;
+    /* Default color */
+}

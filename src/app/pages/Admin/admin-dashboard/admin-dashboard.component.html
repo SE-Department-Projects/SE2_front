@@ -1,13 +1,15 @@
 <div class="my-5 charts">
   <div class="col-md-10 chart-card mb-4">
-    <app-pie-chart></app-pie-chart>
+    <app-pie-chart [detectionDetails]="detectionDetails"></app-pie-chart>
   </div>
   <div class="col-md-10 chart-card mb-4">
     <app-line-chart></app-line-chart>
   </div>
 
   <div class="col-md-10 chart-card mb-4">
-    <app-horizontal-bar-chart></app-horizontal-bar-chart>
+    <app-horizontal-bar-chart
+      [freqLocationsData]="topFreqLocation"
+    ></app-horizontal-bar-chart>
   </div>
 
   <div class="col-md-10 chart-card mb-4">

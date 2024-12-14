@@ -13,17 +13,5 @@
     background-color: #0a1029;
     color: #ffffff;
     margin-top: 5px;
-    /* margin-left: 20px; */
 }
 
-/* Targeting pie-label class with animation */
-::ng-deep .ngx-charts-pie-chart text.pie-label.animation {
-    fill: #ffffff !important;
-    /* Set the text color to white */
-}
-
-/* Alternatively, if you want to target all text in the pie chart */
-::ng-deep .ngx-charts-pie-chart text {
-    fill: #ffffff !important;
-    /* Ensure all text is white */
-}
