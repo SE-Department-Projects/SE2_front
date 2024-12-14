@@ -39,6 +39,37 @@ export class MapComponent implements OnInit {
     this.getAllRobots();
     this.getDetections();
     this.listenForWebSocketUpdates();
+    this.moveRobot();
+  }
+
+  moveRobot(): void {
+    setInterval(() => {
+      this.getRobotLocations();
+    }, 5000);
+  }
+
+  getRobotLocations(): void {
+    this._RobotsService.getAllRobots().subscribe({
+      next: (response) => {
+        if (response.status === 'success') {
+          const updatedRobots = response.data.robots;
+
+          updatedRobots.forEach((updatedRobot: any) => {
+            const existingRobot = this.robots.find(
+              (robot) => robot._id === updatedRobot._id
+            );
+            if (existingRobot) {
+              existingRobot.location = updatedRobot.location; // Update only the location field
+            }
+          });
+
+          console.log('Updated robot locations:', this.robots);
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching robot locations:', err);
+      },
+    });
   }
 
   createImgTag(src: string): HTMLImageElement {
@@ -72,12 +103,12 @@ export class MapComponent implements OnInit {
         detections.forEach((detection) => {
           if (detection.detectionType === 'humanDetection') {
             this.humans.push(detection);
+            this.humanCount = this.humans.length;
           } else if (detection.detectionType === 'obstacleDetection') {
             this.obstacles.push(detection);
+            this.obstacleCount = this.obstacles.length;
           }
         });
-
-        this.updateCounts();
       },
       error: (err) => {
         console.error('Error fetching detections:', err);
@@ -111,8 +142,10 @@ export class MapComponent implements OnInit {
         if (type === 'insert') {
           if (fullDocument.detectionType === 'humanDetection') {
             this.humans.push(fullDocument);
+            this.humanCount = message.redisValues.humanDetectionsCount;
           } else if (fullDocument.detectionType === 'obstacleDetection') {
             this.obstacles.push(fullDocument);
+            this.obstacleCount = message.redisValues.obstacleDetectionsCount;
           }
           this.playBuzzerSound();
         } else if (type === 'delete') {
@@ -121,8 +154,18 @@ export class MapComponent implements OnInit {
           this.obstacles = this.obstacles.filter(
             (obstacle) => obstacle.id !== idToDelete
           );
+          this.humanCount = this.humans.length;
+          this.obstacleCount = this.obstacles.length;
         }
-        this.updateCounts();
+      } else if (message.collection === 'robots') {
+        if (type === 'insert') {
+          this.robots.push(fullDocument);
+          this.robotCount = message.redisValues.robotsCount;
+        } else if (type === 'delete') {
+          const idToDelete = message.key;
+          this.robots = this.robots.filter((robot) => robot._id !== idToDelete);
+          this.robotCount = message.redisValues.robotsCount;
+        }
       }
     });
   }
