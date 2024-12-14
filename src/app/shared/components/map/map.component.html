@@ -1,6 +1,32 @@
 <google-map height="400px" width="100%" [options]="options">
   <map-advanced-marker
-    *ngFor="let position of markerPositions"
-    [position]="position"
-  ></map-advanced-marker>
+    #markerElem="mapAdvancedMarker"
+    *ngFor="let robot of robots"
+    [position]="{ lat: robot.location.latitude, lng: robot.location.longitude }"
+    [content]="createImgTag('./assets/robotpng.png')"
+    (mapClick)="onMarkerClick(markerElem, robot.id)"
+  >
+  </map-advanced-marker>
+  <map-advanced-marker
+    #markerElem="mapAdvancedMarker"
+    *ngFor="let human of humans"
+    [position]="{ lat: human.location.latitude, lng: human.location.longitude }"
+    [title]="human._id"
+    [content]="createImgTag('./assets/human.png')"
+    (mapClick)="onMarkerClick(markerElem, human._id)"
+  >
+  </map-advanced-marker>
+  <map-advanced-marker
+    #markerElem="mapAdvancedMarker"
+    *ngFor="let position of obstacles"
+    [position]="{
+      lat: position.location.latitude,
+      lng: position.location.longitude
+    }"
+    [content]="createImgTag('./assets/obstacle.png')"
+    (mapClick)="onMarkerClick(markerElem, position._id)"
+  >
+  </map-advanced-marker>
+
+  <map-info-window #infoWindow></map-info-window>
 </google-map>

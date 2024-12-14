@@ -1,29 +1,116 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MapAdvancedMarker, MapInfoWindow } from '@angular/google-maps';
+import { RobotsService } from 'src/app/core/services/robots.service';
+import { WebSocketService } from 'src/app/core/services/web-socket.service';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
 })
-export class MapComponent {
+export class MapComponent implements OnInit {
   options: google.maps.MapOptions = {
     mapId: 'DEMO_MAP_ID',
     center: { lat: 30.0444, lng: 31.2357 },
-    zoom: 12,
+    zoom: 11,
   };
+  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
 
-  center: google.maps.LatLngLiteral = { lat: 30.0444, lng: 31.2357 };
-  zoom = 12;
-  markerPositions = [
-    { lat: 30.0444, lng: 31.2357 }, // Tahrir Square
-    { lat: 30.0131, lng: 31.2089 }, // Cairo University
-    { lat: 30.0487, lng: 31.2336 }, // Egyptian Museum
-    { lat: 30.0299, lng: 31.2618 }, // Al-Azhar Mosque
-    { lat: 30.0136, lng: 31.2272 }, // Cairo Opera House
-    { lat: 29.9792, lng: 31.1342 }, // Great Sphinx of Giza
-    { lat: 30.0561, lng: 31.2394 }, // Abdeen Palace
-    { lat: 30.0617, lng: 31.2443 }, // Khan El-Khalili Bazaar
-    { lat: 29.9753, lng: 31.1376 }, // Giza Pyramids
-    { lat: 30.0521, lng: 31.2626 }, // Salah El-Din Citadel
-  ];
+  robots: any[] = [];
+  humans: any[] = [];
+  obstacles: any[] = [];
+
+  constructor(
+    private _RobotsService: RobotsService,
+    private _HttpClient: HttpClient,
+    private _WebSocketService: WebSocketService
+  ) {}
+
+  ngOnInit(): void {
+    this.getAllRobots();
+    this.getDetections();
+    this.listenForWebSocketUpdates();
+  }
+
+  createImgTag(src: string): HTMLImageElement {
+    const imgTag = document.createElement('img');
+    imgTag.src = src;
+    imgTag.style.width = '40px';
+    imgTag.style.height = '40px';
+    imgTag.style.objectFit = 'contain';
+    return imgTag;
+  }
+
+  getAllRobots(): void {
+    this._RobotsService.getAllRobots().subscribe({
+      next: (response) => {
+        if (response.status === 'success') {
+          this.robots = response.data.robots;
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  getDetections(): void {
+    this._RobotsService.getDetections().subscribe({
+      next: (response) => {
+        const detections: any[] = response.data.detections;
+
+        detections.forEach((detection) => {
+          if (detection.detectionType === 'humanDetection') {
+            this.humans.push(detection);
+          } else if (detection.detectionType === 'obstacleDetection') {
+            this.obstacles.push(detection);
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Error fetching detections:', err);
+      },
+    });
+  }
+
+  onMarkerClick(marker: MapAdvancedMarker, id: number) {
+    this.infoWindow.openAdvancedMarkerElement(
+      marker.advancedMarker,
+      `ID: ${id.toString()}`
+    );
+  }
+
+  async getLocationName(lat: number, lon: number): Promise<string> {
+    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+    try {
+      const response: any = await this._HttpClient.get(url).toPromise();
+      return response.display_name || 'Unknown location';
+    } catch (err) {
+      console.error('Error fetching location:', err);
+      return 'Failed to fetch location';
+    }
+  }
+
+  listenForWebSocketUpdates(): void {
+    this._WebSocketService.messages.subscribe((message: any) => {
+      const { type, fullDocument } = message;
+
+      if (message.collection === 'detections') {
+        if (type === 'insert') {
+          if (fullDocument.detectionType === 'humanDetection') {
+            this.humans.push(fullDocument);
+          } else if (fullDocument.detectionType === 'obstacleDetection') {
+            this.obstacles.push(fullDocument);
+          }
+        } else if (type === 'delete') {
+          const idToDelete = message.key;
+          this.humans = this.humans.filter((human) => human.id !== idToDelete);
+          this.obstacles = this.obstacles.filter(
+            (obstacle) => obstacle.id !== idToDelete
+          );
+        }
+      }
+    });
+  }
 }
