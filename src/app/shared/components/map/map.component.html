@@ -1,32 +1,71 @@
-<google-map height="400px" width="100%" [options]="options">
-  <map-advanced-marker
-    #markerElem="mapAdvancedMarker"
-    *ngFor="let robot of robots"
-    [position]="{ lat: robot.location.latitude, lng: robot.location.longitude }"
-    [content]="createImgTag('./assets/robotpng.png')"
-    (mapClick)="onMarkerClick(markerElem, robot.id)"
-  >
-  </map-advanced-marker>
-  <map-advanced-marker
-    #markerElem="mapAdvancedMarker"
-    *ngFor="let human of humans"
-    [position]="{ lat: human.location.latitude, lng: human.location.longitude }"
-    [title]="human._id"
-    [content]="createImgTag('./assets/human.png')"
-    (mapClick)="onMarkerClick(markerElem, human._id)"
-  >
-  </map-advanced-marker>
-  <map-advanced-marker
-    #markerElem="mapAdvancedMarker"
-    *ngFor="let position of obstacles"
-    [position]="{
-      lat: position.location.latitude,
-      lng: position.location.longitude
-    }"
-    [content]="createImgTag('./assets/obstacle.png')"
-    (mapClick)="onMarkerClick(markerElem, position._id)"
-  >
-  </map-advanced-marker>
+<div style="display: flex; height: 400px">
+  <div style="flex: 1">
+    <google-map height="100%" width="100%" [options]="options">
+      <map-advanced-marker
+        #markerElem="mapAdvancedMarker"
+        *ngFor="let robot of robots"
+        [position]="{
+          lat: robot.location.latitude,
+          lng: robot.location.longitude
+        }"
+        [content]="createImgTag('./assets/robotpng.png')"
+        (mapClick)="onMarkerClick(markerElem, robot.id)"
+      ></map-advanced-marker>
+      <map-advanced-marker
+        #markerElem="mapAdvancedMarker"
+        *ngFor="let human of humans"
+        [position]="{
+          lat: human.location.latitude,
+          lng: human.location.longitude
+        }"
+        [content]="createImgTag('./assets/man.png')"
+        (mapClick)="onMarkerClick(markerElem, human._id)"
+      ></map-advanced-marker>
+      <map-advanced-marker
+        #markerElem="mapAdvancedMarker"
+        *ngFor="let position of obstacles"
+        [position]="{
+          lat: position.location.latitude,
+          lng: position.location.longitude
+        }"
+        [content]="createImgTag('./assets/obstacle.png')"
+        (mapClick)="onMarkerClick(markerElem, position._id)"
+      ></map-advanced-marker>
+      <map-info-window #infoWindow></map-info-window>
+    </google-map>
+  </div>
 
-  <map-info-window #infoWindow></map-info-window>
-</google-map>
+  <div
+    style="
+      width: 75px;
+      padding: 10px;
+      background: #0a1029;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around; /* Adds equal space between items */
+    "
+  >
+    <div style="display: flex; align-items: center">
+      <img
+        src="./assets/robotpng.png"
+        style="width: 30px; height: 30px; margin-right: 10px"
+      />
+      <span>{{ robotCount }}</span>
+    </div>
+    <div style="display: flex; align-items: center">
+      <img
+        src="./assets/man.png"
+        style="width: 30px; height: 30px; margin-right: 10px"
+      />
+      <span>{{ humanCount }}</span>
+    </div>
+    <div style="display: flex; align-items: center">
+      <img
+        src="./assets/obstacle.png"
+        style="width: 30px; height: 30px; margin-right: 10px"
+      />
+      <span>{{ obstacleCount }}</span>
+    </div>
+  </div>
+</div>

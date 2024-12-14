@@ -21,11 +21,19 @@ export class MapComponent implements OnInit {
   humans: any[] = [];
   obstacles: any[] = [];
 
+  robotCount = 0;
+  humanCount = 0;
+  obstacleCount = 0;
+
+  private buzzerSound: HTMLAudioElement;
+
   constructor(
     private _RobotsService: RobotsService,
     private _HttpClient: HttpClient,
     private _WebSocketService: WebSocketService
-  ) {}
+  ) {
+    this.buzzerSound = new Audio('./assets/buzzer1.mp3');
+  }
 
   ngOnInit(): void {
     this.getAllRobots();
@@ -47,6 +55,7 @@ export class MapComponent implements OnInit {
       next: (response) => {
         if (response.status === 'success') {
           this.robots = response.data.robots;
+          this.robotCount = this.robots.length;
         }
       },
       error: (err) => {
@@ -67,6 +76,8 @@ export class MapComponent implements OnInit {
             this.obstacles.push(detection);
           }
         });
+
+        this.updateCounts();
       },
       error: (err) => {
         console.error('Error fetching detections:', err);
@@ -103,6 +114,7 @@ export class MapComponent implements OnInit {
           } else if (fullDocument.detectionType === 'obstacleDetection') {
             this.obstacles.push(fullDocument);
           }
+          this.playBuzzerSound();
         } else if (type === 'delete') {
           const idToDelete = message.key;
           this.humans = this.humans.filter((human) => human.id !== idToDelete);
@@ -110,7 +122,21 @@ export class MapComponent implements OnInit {
             (obstacle) => obstacle.id !== idToDelete
           );
         }
+        this.updateCounts();
       }
     });
+  }
+
+  playBuzzerSound(): void {
+    this.buzzerSound.currentTime = 0;
+    this.buzzerSound.play().catch((err) => {
+      console.error('Error playing buzzer sound:', err);
+    });
+  }
+
+  updateCounts(): void {
+    this.robotCount = this.robots.length;
+    this.humanCount = this.humans.length;
+    this.obstacleCount = this.obstacles.length;
   }
 }
