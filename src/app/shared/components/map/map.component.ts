@@ -36,10 +36,10 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllRobots();
     this.getDetections();
+    this.getAllRobots();
     this.listenForWebSocketUpdates();
-    // this.moveRobot();
+    this.moveRobot();
   }
 
   moveRobot(): void {

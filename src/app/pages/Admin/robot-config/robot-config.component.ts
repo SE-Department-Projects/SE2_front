@@ -26,20 +26,13 @@ export class RobotConfigComponent {
     { field: 'location', header: 'Location' },
   ];
 
-  tableActions = [{ icon: 'eye' }, { icon: 'edit' }, { icon: 'trash' }];
+  tableActions = [{ icon: 'trash' }];
 
   actionClick(event: { action: { label: string; icon: string }; row: any }) {
     console.log(event);
     const action = event.action;
     const row = event.row;
     switch (action.icon) {
-      case 'eye':
-        this.router.navigate(['/robotInfo', row.id]);
-        break;
-      case 'edit':
-        // this.router.navigate(['/admin/editUser', row.id]);
-
-        break;
       case 'trash':
         this.deleteRobot(row._id);
         break;
