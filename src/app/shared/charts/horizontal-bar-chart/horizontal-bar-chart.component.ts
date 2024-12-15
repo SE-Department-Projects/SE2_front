@@ -41,7 +41,7 @@ export class HorizontalBarChartComponent {
   gradient: boolean = false;
   showLegend: boolean = true;
   showXAxisLabel: boolean = true;
-  barPadding: number = 50;
+  barPadding: number =  50;
   xAxisLabel: string = 'Count';
   showYAxisLabel: boolean = true;
   yAxisLabel: string = 'Location';

@@ -74,4 +74,11 @@ export class AuthService {
       email,
     });
   }
+
+  resetPassword(token: string, data: any): Observable<any> {
+    return this._HttpClient.patch(
+      `${this.apiUrl}users/resetPassword/${token}`,
+      data
+    );
+  }
 }

@@ -44,4 +44,8 @@ export class UsersService {
   updateProfile(data: any): Observable<any> {
     return this._HttpClient.patch(`${this.apiUrl}users/updateMe`, data);
   }
+
+  updateUserSProfile(id: string, data: any): Observable<any> {
+    return this._HttpClient.patch(`${this.apiUrl}users/${id}`, data);
+  }
 }

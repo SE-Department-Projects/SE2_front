@@ -33,6 +33,7 @@ export class UserDetailsComponent {
 
   messageError: string = '';
   isLoading: boolean = false;
+  userId: any = '';
 
   user: any;
   userForm: FormGroup;
@@ -40,9 +41,9 @@ export class UserDetailsComponent {
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe({
       next: (params) => {
-        let userId: any = params.get('id');
+        this.userId = params.get('id');
 
-        this.getUserProfile(userId);
+        this.getUserProfile(this.userId);
       },
     });
   }
@@ -69,18 +70,20 @@ export class UserDetailsComponent {
     if (this.userForm.valid) {
       this.isLoading = true;
       console.log(this.userForm.value);
-      this._UsersService.updateProfile(this.userForm.value).subscribe({
-        next: (res) => {
-          this.isLoading = false;
-          this.user = res.data.user;
-          this.showToastrSuccessful();
-        },
-        error: (err) => {
-          this.isLoading = false;
-          console.error('Error updating profile:', err);
-          this.messageError = 'Failed to update profile.';
-        },
-      });
+      this._UsersService
+        .updateUserSProfile(this.userId, this.userForm.value)
+        .subscribe({
+          next: (res) => {
+            this.isLoading = false;
+            this.user = res.data.user;
+            this.showToastrSuccessful();
+          },
+          error: (err) => {
+            this.isLoading = false;
+            console.error('Error updating profile:', err);
+            this.messageError = 'Failed to update profile.';
+          },
+        });
     } else {
       this.messageError = 'Please ensure all fields are filled correctly.';
     }

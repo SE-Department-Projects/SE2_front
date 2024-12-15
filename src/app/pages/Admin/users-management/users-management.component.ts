@@ -32,7 +32,7 @@ export class UsersManagementComponent {
 
   totalAdminsCount: number = 0;
   totalVendorsCount: number = 0;
-  totalTotalCount: number = 0;
+  totalCount: number = 0;
 
   // Define actions
   tableActions = [];
@@ -48,7 +48,7 @@ export class UsersManagementComponent {
               CreatedAt: user.CreatedAt.slice(0, 10),
             })
           );
-          this.totalAdminsCount = 5;
+          this.totalAdminsCount = response.data.adminCount;
 
           this.vendorsTableData = response.data.vendor.map(
             (user: User, index: number) => ({
@@ -59,7 +59,8 @@ export class UsersManagementComponent {
           );
 
           console.log(this.totalVendorsCount);
-          this.totalVendorsCount = 5;
+          this.totalVendorsCount = response.data.vendorCount;
+          this.totalCount = this.totalAdminsCount + this.totalVendorsCount;
         }
       },
       error: (err) => {
