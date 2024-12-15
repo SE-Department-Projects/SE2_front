@@ -21,6 +21,22 @@
   </div>
 
   <div class="my-4">
-    <app-table [columns]="tableColumns" [data]="tableData"></app-table>
+    <div class="row my-3">
+      <div class="col-md-4">
+        <label for="filterType" class="mb-2">Detection Type:</label>
+        <select
+          id="filterType"
+          class="form-select"
+          [(ngModel)]="selectedDetectionType"
+          (change)="filterTableData()"
+        >
+          <option value="">All</option>
+          <option value="humanDetection">Human Detection</option>
+          <option value="obstacleDetection">Obstacle Detection</option>
+        </select>
+      </div>
+    </div>
+
+    <app-table [columns]="tableColumns" [data]="filteredTableData"></app-table>
   </div>
 </div>

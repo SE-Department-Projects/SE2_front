@@ -19,6 +19,9 @@ export class DetectionHistoryComponent implements OnInit {
   totalDetections: number = 0;
   detectionsLastHour: number = 0;
   detectionsToday: number = 0;
+  filteredTableData: any[] = [];
+  selectedDetectionType: string = '';
+  selectedTimeFilter: string = 'all';
 
   constructor(
     private _RobotsService: RobotsService,
@@ -34,6 +37,7 @@ export class DetectionHistoryComponent implements OnInit {
     this._RobotsService.getDetections().subscribe({
       next: (res) => {
         this.tableData = res.data.detections;
+        this.filteredTableData = [...this.tableData];
         this.updateDetectionCounts();
       },
       error: (err) => {
@@ -49,6 +53,7 @@ export class DetectionHistoryComponent implements OnInit {
       if (collection === 'detections') {
         if (type === 'insert') {
           this.tableData.push(fullDocument);
+          this.filterTableData();
           this.updateDetectionCounts();
         } else if (type === 'delete') {
           console.log(message.key);
@@ -56,10 +61,22 @@ export class DetectionHistoryComponent implements OnInit {
           this.tableData = this.tableData.filter(
             (data) => data.id !== idToDelete
           );
+          this.filterTableData();
           this.updateDetectionCounts();
         }
       }
     });
+  }
+
+  filterTableData(): void {
+    if (this.selectedDetectionType) {
+      this.filteredTableData = this.tableData.filter(
+        (detection) => detection.detectionType === this.selectedDetectionType
+      );
+    } else {
+      this.filteredTableData = [...this.tableData];
+    }
+    this.updateDetectionCounts();
   }
 
   updateDetectionCounts(): void {
@@ -71,12 +88,12 @@ export class DetectionHistoryComponent implements OnInit {
     ).getTime();
     const oneHourAgo = now.getTime() - 60 * 60 * 1000;
 
-    this.totalDetections = this.tableData.length;
-    this.detectionsLastHour = this.tableData.filter((detection) => {
+    this.totalDetections = this.filteredTableData.length;
+    this.detectionsLastHour = this.filteredTableData.filter((detection) => {
       const detectionTime = new Date(detection.detectionTime).getTime();
       return detectionTime >= oneHourAgo;
     }).length;
-    this.detectionsToday = this.tableData.filter((detection) => {
+    this.detectionsToday = this.filteredTableData.filter((detection) => {
       const detectionTime = new Date(detection.detectionTime).getTime();
       return detectionTime >= startOfDay;
     }).length;

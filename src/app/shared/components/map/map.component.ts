@@ -39,7 +39,7 @@ export class MapComponent implements OnInit {
     this.getAllRobots();
     this.getDetections();
     this.listenForWebSocketUpdates();
-    this.moveRobot();
+    // this.moveRobot();
   }
 
   moveRobot(): void {

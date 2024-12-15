@@ -1,0 +1,16 @@
+.charts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.chart-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a1029;
+  color: #ffffff;
+  margin-top: 5px;
+}

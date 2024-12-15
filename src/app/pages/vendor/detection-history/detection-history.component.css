@@ -22,3 +22,21 @@
       padding: 0;
       border: solid 2px var(--secondary-color);
   } */
+
+#filterType {
+  color: #fff;
+  background-color: var(--tertiary-color);
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+#filterType:hover {
+  background-color: #010016;
+}
+
+#filterType:focus {
+  background-color: #010016;
+  box-shadow: 0 0 5px #078f4048;
+}
