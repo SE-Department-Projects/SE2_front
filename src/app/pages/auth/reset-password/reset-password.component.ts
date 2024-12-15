@@ -62,7 +62,6 @@ export class ResetPasswordComponent {
         .subscribe({
           next: (res) => {
             if (res.status === 'success') {
-              this._AuthService.toggleLockUser({})
               this._Router.navigate(['login']);
             }
             console.log(res);
